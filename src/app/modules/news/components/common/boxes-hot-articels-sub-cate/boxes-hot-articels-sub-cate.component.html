@@ -1,0 +1,58 @@
+<div class="list-box-hot-articels">
+      <ng-container *ngFor="let item of hotArticlesSubCate; index as idx">
+            <div
+                  class="box-hot-articels-sub-cate"
+                  *ngIf="item.new_articles_hot_categories.length >= 3"
+            >
+                  <header class="header">
+                        <span class="name-header">{{ item.name }}</span>
+                  </header>
+                  <app-article
+                        [articleData]="item?.new_articles_hot_categories[0]"
+                  >
+                        <div class="articel-sub-cate-first">
+                              <img
+                                    (error)="handleImageError($event)"
+                                    [src]="
+                                          item?.new_articles_hot_categories[0]
+                                                ?.new_article.avatar
+                                    "
+                                    alt=""
+                              />
+                              <p class="title">
+                                    {{
+                                          item?.new_articles_hot_categories[0]
+                                                ?.new_article.title
+                                    }}
+                              </p>
+                        </div>
+                  </app-article>
+                  <hr />
+                  <app-article
+                        [articleData]="item?.new_articles_hot_categories[1]"
+                  >
+                        <div class="articel-sub-cate">
+                              <p class="title">
+                                    {{
+                                          item?.new_articles_hot_categories[1]
+                                                ?.new_article.title
+                                    }}
+                              </p>
+                        </div>
+                  </app-article>
+                  <hr />
+                  <app-article
+                        [articleData]="item?.new_articles_hot_categories[2]"
+                  >
+                        <div class="articel-sub-cate">
+                              <p class="title">
+                                    {{
+                                          item?.new_articles_hot_categories[2]
+                                                ?.new_article.title
+                                    }}
+                              </p>
+                        </div>
+                  </app-article>
+            </div>
+      </ng-container>
+</div>

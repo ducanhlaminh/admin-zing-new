@@ -1,0 +1,163 @@
+<div mat-dialog-title class="title-dialog">
+      <span>Preview</span>
+      <button mat-dialog-close mat-icon-button class="btnClose">
+            <fa-icon [icon]="faClose"></fa-icon>
+      </button>
+</div>
+<div class="layout_header">
+      <div class="header">
+            <div class="logo">
+                  <p class="top-header">TẠP CHÍ TRI THỨC TRỰC TUYẾN</p>
+                  <img
+                        src="https://static-znews.zingcdn.me/images/logo-zing-home.svg"
+                        alt=""
+                        class="header_logo"
+                  />
+            </div>
+            <div class="categories">
+                  <div class="cate-item">
+                        <b> Xuất bản </b>
+                  </div>
+                  <div class="cate-item">
+                        <b> Xuất bản </b>
+                  </div>
+                  <div class="cate-item">
+                        <b> Xuất bản </b>
+                  </div>
+                  <div class="cate-item">
+                        <b> Xuất bản </b>
+                  </div>
+                  <div class="cate-item">
+                        <b> Xuất bản </b>
+                  </div>
+                  <div class="cate-item">
+                        <b> Xuất bản </b>
+                  </div>
+            </div>
+            <div class="right_header">
+                  <div class="tool">
+                        <fa-icon
+                              [icon]="faMagnifyingGlass"
+                              class="searchBtn activeShowInput"
+                              #searchBtn
+                        >
+                        </fa-icon>
+                  </div>
+                  <div
+                        class="avatar"
+                        mat-button
+                        [matMenuTriggerFor]="aboveMenu"
+                  ></div>
+
+                  <mat-menu #aboveMenu="matMenu" yPosition="above">
+                        <button mat-menu-item>Đăng xuất</button>
+                        <button mat-menu-item>Admin</button>
+                  </mat-menu>
+            </div>
+
+            <!-- <fa-icon [icon]="faUser"></fa-icon> -->
+      </div>
+
+      <ng-template #profile>
+            <div class="btnSignIn">
+                  <button mat-raised-button>Đăng nhập</button>
+            </div>
+      </ng-template>
+</div>
+<div class="layout_content">
+      <div class="content">
+            <div #contentPreview></div>
+      </div>
+</div>
+<div class="layout_footer">
+      <div class="footer">
+            <div class="content-footer">
+                  <div class="cloum1">
+                        <div class="">
+                              <b>TRỤ SỞ HÀ NỘI</b>
+                              <p>
+                                    Tầng 20, tòa nhà Center Building, Hapulico
+                                    Complex, số 1 Nguyễn Huy Tưởng, p. Thanh
+                                    Xuân Trung, quận Thanh Xuân, Hà Nội. Điện
+                                    thoại: 024.39743410, máy lẻ 230.
+                              </p>
+                        </div>
+                        <div class="">
+                              <b>TRỤ SỞ HỒ CHÍ MINH</b>
+                              <p>
+                                    Tầng 6 Tòa nhà 123, 123 Võ Văn Tần, phường
+                                    6, quận 3, Tp. HCM Điện thoại: 028.73077979,
+                                    máy lẻ 216
+                              </p>
+                        </div>
+                  </div>
+                  <div class="cloum1">
+                        <div class="">
+                              <b>CHỊU TRÁCH NHIỆM QUẢN LÝ NỘI DUNG</b>
+                              <p>Bà Nguyễn Bích Minh</p>
+                        </div>
+                        <div class="">
+                              <b>HỢP TÁC NỘI DUNG</b>
+                              <table>
+                                    <tr>
+                                          <td>
+                                                <fa-icon
+                                                      [icon]="faPhone"
+                                                ></fa-icon>
+                                          </td>
+                                          <td>024.730.7797 (máy lẻ 62362)</td>
+                                    </tr>
+                                    <tr>
+                                          <td>
+                                                <fa-icon
+                                                      [icon]="faMailBulk"
+                                                ></fa-icon>
+                                          </td>
+                                          <td>marketing@kenh14.vn</td>
+                                    </tr>
+                              </table>
+                        </div>
+                        <div class="">
+                              <b>LIÊN HỆ QUẢNG CÁO</b>
+                              <table>
+                                    <tr>
+                                          <td>
+                                                <fa-icon
+                                                      [icon]="faPhone"
+                                                ></fa-icon>
+                                          </td>
+                                          <td>024.730.7797 (máy lẻ 62362)</td>
+                                    </tr>
+                                    <tr>
+                                          <td>
+                                                <fa-icon
+                                                      [icon]="faMailBulk"
+                                                ></fa-icon>
+                                          </td>
+                                          <td>marketing@kenh14.vn</td>
+                                    </tr>
+                              </table>
+                        </div>
+                  </div>
+                  <div class="cloum1">
+                        <div class="">
+                              <p>
+                                    © Copyright 2007 - 2023
+                                    <b>CÔNG TY CỔ PHẦN VCCORP</b>
+                              </p>
+
+                              <p>
+                                    Tầng 17, 19, 20, 21 Tòa nhà Center Building
+                                    - Hapulico Complex, Số 1 Nguyễn Huy Tưởng,
+                                    Thanh Xuân, Hà Nội.
+                              </p>
+                              <p>
+                                    Giấy phép số 1082/GP-STTTT do Sở Thông tin
+                                    và Truyền thông Hà Nội cấp ngày 16 tháng 4
+                                    năm 2014
+                              </p>
+                        </div>
+                  </div>
+            </div>
+      </div>
+</div>

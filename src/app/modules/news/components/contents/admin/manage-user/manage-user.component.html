@@ -1,0 +1,262 @@
+<div class="title">
+    <h2>Người dùng</h2>
+    <button class="btn-create" [routerLink]="['/', 'admin', 'tao-nguoi-dung']">
+        <mat-icon class="icon">add_to_photos</mat-icon>
+        <span>Thêm người dùng mới</span>
+    </button>
+</div>
+<div>
+    <div class="filter">
+        <button
+            class="btn-toggle"
+            [matBadge]="length"
+            matBadgeColor="primary"
+            [matBadgeHidden]="
+                selectedStatus === 2 ||
+                selectedStatus === 3 ||
+                selectedStatus === 4 ||
+                selectedStatus === 5
+            "
+            [ngClass]="{ 'selected-filter': selectedStatus === 1 }"
+            (click)="this.formFilter.patchValue({
+                        role_id: null,
+                      });this.selectedStatus = 1;this.getUser()"
+        >
+            <span>Tất cả</span>
+        </button>
+        <button
+            class="btn-toggle"
+            [matBadge]="length"
+            matBadgeColor="primary"
+            [matBadgeHidden]="
+                selectedStatus === 1 ||
+                selectedStatus === 3 ||
+                selectedStatus === 4 ||
+                selectedStatus === 5
+            "
+            [ngClass]="{ 'selected-filter': selectedStatus === 2 }"
+            (click)="this.formFilter.patchValue({
+                  role_id: 1,
+                });this.selectedStatus = 2; this.getUser()"
+        >
+            <span>Tổng biên tập</span>
+        </button>
+        <button
+            class="btn-toggle"
+            [matBadge]="length"
+            matBadgeColor="primary"
+            [matBadgeHidden]="
+                selectedStatus === 1 ||
+                selectedStatus === 2 ||
+                selectedStatus === 4 ||
+                selectedStatus === 5
+            "
+            [ngClass]="{ 'selected-filter': selectedStatus === 3 }"
+            (click)="this.formFilter.patchValue({
+                  role_id: 2,
+                });this.selectedStatus = 3; this.getUser()"
+        >
+            <span>Biên tập viên</span>
+        </button>
+        <button
+            class="btn-toggle"
+            [matBadge]="length"
+            matBadgeColor="primary"
+            [matBadgeHidden]="
+                selectedStatus === 1 ||
+                selectedStatus === 2 ||
+                selectedStatus === 3 ||
+                selectedStatus === 5
+            "
+            [ngClass]="{ 'selected-filter': selectedStatus === 4 }"
+            (click)="this.formFilter.patchValue({
+                  role_id: 3,
+                });this.selectedStatus = 4; this.getUser()"
+        >
+            <span>Kiểm duyệt viên</span>
+        </button>
+        <button
+            class="btn-toggle"
+            [matBadge]="length"
+            matBadgeColor="primary"
+            [matBadgeHidden]="
+                selectedStatus === 2 ||
+                selectedStatus === 1 ||
+                selectedStatus === 4 ||
+                selectedStatus === 3
+            "
+            [ngClass]="{ 'selected-filter': selectedStatus === 5 }"
+            (click)="
+                this.formFilter.patchValue({
+                    role_id: 4
+                });
+                this.selectedStatus = 5;
+                this.getUser()
+            "
+        >
+            <span>Kiểm duyệt viên</span>
+        </button>
+    </div>
+    <div class="filter-bottom">
+        <div class="container-action">
+            <div class="action">
+                <select [(ngModel)]="selectedAction">
+                    <option value="1">Hành động</option>
+                    <option value="2">Xóa</option>
+                </select>
+                <button
+                    class="btn-action btn-filter"
+                    (click)="actionFn(selectedAction)"
+                    [disabled]="selectedAction === '1'"
+                >
+                    <span>Áp dụng</span>
+                </button>
+            </div>
+            <form [formGroup]="formFilter" class="action">
+                <select formControlName="role_id">
+                    <option value="">Đổi thành...</option>
+                    <option [value]="1">Tổng biên tập</option>
+                    <option [value]="2">Quản trị viên</option>
+                    <option [value]="3">Kiểm duyệt viên</option>
+                    <option [value]="4">Biên tập viên</option>
+                </select>
+
+                <button class="btn-action btn-filter" (click)="getUser()">
+                    <span>Thay đổi</span>
+                </button>
+            </form>
+        </div>
+
+        <form [formGroup]="formFilter" class="search">
+            <input
+                type="text"
+                formControlName="name"
+                placeholder="Tên người dùng"
+            />
+            <button class="btn-create" (click)="getUser()">
+                <span>Tìm kiếm</span>
+            </button>
+        </form>
+    </div>
+</div>
+<table>
+    <tr>
+        <th class="select-all">
+            <input
+                type="checkbox"
+                name=""
+                id=""
+                (change)="checkAllFn($event)"
+                #checkAll
+            />
+        </th>
+        <th class="header-name">
+            <div>
+                <span>Tên người dùng</span>
+            </div>
+        </th>
+        <th class="header-view">
+            <div>
+                <span>Email</span>
+            </div>
+        </th>
+        <th class="header-cate">
+            <div>
+                <span>Vai trò</span>
+            </div>
+        </th>
+    </tr>
+    <ng-container *ngFor="let item of users; let i = index">
+        <ng-container *ngIf="1; else editQuick">
+            <tr class="" [ngClass]="{ selected: item.select }">
+                <td class="item-stt">
+                    <div class="">
+                        <input
+                            type="checkbox"
+                            name=""
+                            id=""
+                            [ngModel]="item.selected"
+                            (ngModelChange)="changeSelected()"
+                        />
+                    </div>
+                </td>
+                <td class="item-name">
+                    <div class="title-status">
+                        <p *ngIf="item?.name">{{ item?.name }}</p>
+                        <div class="pending" *ngIf="!item?.name">
+                            Chờ xác nhận
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <small
+                            [routerLink]="['chinh-sua-thong-tin', item.id]"
+                            class="update-item"
+                            >Chỉnh sửa</small
+                        >
+
+                        <small (click)="deleteItem(item)" class="delete-item"
+                            >Xóa</small
+                        >
+                        <small (click)="viewDetail(item)">Xem</small>
+                    </div>
+                </td>
+                <td class="item-cate">
+                    <span>{{ item?.email }}</span>
+                </td>
+                <td class="item-cate">
+                    <span>{{ item?.Role?.name }}</span>
+                </td>
+            </tr>
+        </ng-container>
+    </ng-container>
+</table>
+<mat-paginator
+    #paginator
+    class="demo-paginator"
+    aria-label="Select page"
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    (page)="handlePageEvent($event)"
+>
+</mat-paginator>
+<ngx-loading [show]="true" *ngIf="loading"></ngx-loading>
+<ng-template #editQuick>
+    <tr>
+        <td colspan="7" class="edit-quick">
+            <form [formGroup]="formEdit">
+                <h4>SỬA NHANH</h4>
+                <div class="container-edit">
+                    <div class="title-slug">
+                        <div class="edit-title">
+                            <label for="name">Tiêu đề</label>
+                            <input
+                                type="text"
+                                id="name"
+                                value=""
+                                formControlName="name"
+                            />
+                        </div>
+                        <div class="edit-slug">
+                            <label for="email">Địa chỉ Email</label>
+                            <input
+                                type="text"
+                                id="email"
+                                name=""
+                                value=""
+                                formControlName="email"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="container-btn">
+                    <button class="btn-create" (click)="submitUpdate()">
+                        Cập nhật
+                    </button>
+                    <button class="btn-cancel" (click)="close()">Hủy</button>
+                </div>
+            </form>
+        </td>
+    </tr>
+</ng-template>

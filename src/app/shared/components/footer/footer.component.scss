@@ -1,0 +1,30 @@
+.cloum1{
+      width: 33%;
+      display: flex;
+      flex-direction: column;
+      padding: 10px 20px;
+      border-right: 1px solid #b2b1b1a1;
+      p {
+            color: rgba(107, 107, 107, 0.683);
+            font-size: 14px;
+            line-height: 20px;
+      }
+      &:last-child{
+            border-right: 0
+      }
+}
+table{
+      margin-top: 10px;
+      color: rgba(107, 107, 107, 0.683);
+      font-size: 14px;
+      td {
+      min-width: 50px;
+
+      }
+      tr{
+            height: 30px;
+      }
+}
+b {
+      font-size: 16px;
+}

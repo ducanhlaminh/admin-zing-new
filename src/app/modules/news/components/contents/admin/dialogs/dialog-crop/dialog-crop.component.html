@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>Nhập file ảnh</h1>
+<hr />
+<div class="content">
+      <image-cropper></image-cropper>
+      <div class="import-image">
+            <div class="crop">
+                  <image-cropper
+                        [imageFile]="this.data.imageCrop"
+                        [transform]="transform"
+                        (imageCropped)="imageCropped($event)"
+                        [maintainAspectRatio]="
+                              data?.type === 'avatar' ? true : false
+                        "
+                        [resizeToWidth]="1100"
+                        format="png"
+                        [aspectRatio]="1 / 1"
+                  >
+                  </image-cropper>
+            </div>
+            <div class="slider">
+                  <fa-icon [icon]="faImage" class="icon-left"></fa-icon>
+                  <mat-slider max="5" min="1" step=".1">
+                        <input
+                              matSliderThumb
+                              [value]="scale"
+                              (valueChange)="changeValue($event)"
+                              #slider
+                        />
+                  </mat-slider>
+                  <fa-icon [icon]="faImage" class="icon-right"> </fa-icon>
+            </div>
+
+            <button
+                  mat-raised-button
+                  color="primary"
+                  [mat-dialog-close]="data?.srcImg"
+                  cdkFocusInitial
+            >
+                  Xác nhận
+            </button>
+            <button mat-raised-button cdkFocusInitial mat-dialog-close>
+                  Cancel
+            </button>
+      </div>
+</div>

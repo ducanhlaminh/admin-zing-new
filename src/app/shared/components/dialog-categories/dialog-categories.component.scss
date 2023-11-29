@@ -1,0 +1,49 @@
+.layout-dialog{
+      display: flex;
+      background: whitesmoke;
+      justify-content: center;
+      padding-bottom: 20px;
+
+      .header-dialog{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            .icon-close{
+                  font-size: 26px;
+                  font-weight: lighter;
+            }
+      }
+      .content-dialog{
+            width: 1100px;
+            font-size: 18px;
+            .categories{
+                  display: flex;
+                  flex-wrap: wrap;
+                  .category{
+                        width: calc(100% / 5);
+                        padding-right: 30px;
+                        box-sizing: border-box;
+                        .name-category{
+                              color: #007BFF;
+                              cursor: pointer;
+                              &:hover{
+                                    text-decoration: underline;
+                              }
+                        }
+                        .sub-category-name{
+                              cursor: pointer;
+                              padding: 5px 0;
+                              &:hover{
+                                    text-decoration: underline;
+                              }
+                        }
+                  }
+                  small{
+                        cursor: pointer;
+                        text-decoration: underline;
+                        color: rgba(128, 128, 128, 0.745);
+                  }
+            }
+      }
+}

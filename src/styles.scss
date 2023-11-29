@@ -1,1 +1,146 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,900;1,300;1,400;1,700;1,900&display=swap");
+
+@font-face {
+  font-family: "Berfilem";
+  src: url("./assets/fonts/Berfilem.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "TikTok";
+  src: url("./assets/fonts/TikTokDisplay-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Arial";
+  src: url("./assets/fonts/SVN-ArialRegular.ttf") format("truetype");
+}
+:root {
+  --header-color: #333;
+  --white-color: #fff;
+  --primay-color: #0347ff;
+}
+
+html,
+body {
+  height: 100%;
+  line-height: 1.5;
+}
+
+body {
+  margin: 0;
+  font-family: "Arial";
+  color: #222222;
+}
+
+.mat-mdc-dialog-surface.mdc-dialog__surface {
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: gray;
+  margin-right: 20px;
+
+  &:hover {
+    color: var(--primay-color);
+  }
+}
+
+.tox .tox-editor-header {
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  z-index: 0;
+}
+
+/* Importing Bootstrap SCSS file. */
+hr {
+  border: 0;
+  border-bottom: 1px solid #bebebea3;
+  margin: 10px 0;
+}
+
+h4,
+h3,
+h1,
+h2 {
+  margin: 10px 0;
+  font-family: "Merriweather";
+}
+
+h4 {
+  font-size: 14px;
+}
+
+img {
+  cursor: pointer;
+}
+
+:ng-deep .mat-mdc-form-field-focus-overlay {
+  display: none;
+}
+
+input[type="text"] {
+  border-radius: 4px;
+  height: 40px;
+  border: 1px solid #e2e2e2;
+  font-weight: 300;
+  color: #585757;
+  outline: none;
+  width: 100%;
+  padding-left: 10px;
+  box-sizing: border-box;
+  padding-left: 40px;
+}
+
+select {
+  min-width: 150px;
+  border-radius: 4px;
+  height: 40px;
+  border: 1px solid #e2e2e2;
+  font-weight: 300;
+  color: #807f7f;
+  outline: none;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.btn-create {
+  cursor: pointer;
+  background: var(--primay-color);
+  padding: 10px 35px;
+  border-radius: 5px;
+  border: 0;
+  color: #fff;
+  gap: 10px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  border: 1px solid transparent;
+  .icon {
+    display: flex;
+    align-items: center;
+  }
+
+  &:hover {
+    background: #fff;
+    border: 1px solid var(--primay-color);
+    color: var(--primay-color);
+  }
+}
+
+input[type="number"] {
+  width: 50px;
+  border-radius: 4px;
+  height: 36px;
+  border: 1px solid #e2e2e2;
+  font-weight: 300;
+  color: #585757;
+  outline: none;
+  padding-left: 10px;
+}

@@ -1,0 +1,34 @@
+<form [formGroup]="formUser" class="container">
+    <div class="avatar">
+        <img [src]="this.formUser.value?.avatar" alt="" />
+    </div>
+    <div class="edit-field">
+        <label for="name">Tên người dùng</label>
+        <input type="text" formControlName="name" id="name" readonly />
+    </div>
+    <div class="edit-field">
+        <label for="email">Email</label>
+        <input type="text" formControlName="email" id="email" readonly />
+    </div>
+    <div class="edit-field">
+        <label for="nickname">Nickname</label>
+        <input type="text" formControlName="nickname" id="nickname" readonly />
+    </div>
+    <div class="edit-field">
+        <label for="role">Vai trò</label>
+        <select formControlName="role_id">
+            <option [value]="3">Quản trị viên</option>
+            <option [value]="2">Biên tập viên</option>
+            <option [value]="1">Tổng biên tập</option>
+            <option [value]="4">Kiểm duyệt viên</option>
+        </select>
+    </div>
+    <button class="btn-reset" (click)="submitCreate()">
+        <span>Reset mật khẩu</span>
+    </button>
+    <div class="">
+        <button class="btn-create" (click)="submitCreate()">
+            <span>Xác nhận</span>
+        </button>
+    </div>
+</form>

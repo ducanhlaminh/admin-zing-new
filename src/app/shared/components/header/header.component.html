@@ -1,0 +1,60 @@
+<div class="header">
+    <div class="logo" (click)="clickLogo()">
+        <p class="top-header">TẠP CHÍ TRI THỨC TRỰC TUYẾN</p>
+        <img
+            src="https://static-znews.zingcdn.me/images/logo-zing-home.svg"
+            alt=""
+            class="header_logo"
+        />
+    </div>
+    <div class="categories">
+        <ng-container
+            *ngFor="
+                let item of this.CategoryService.categories$ | async;
+                let count = index
+            "
+        >
+            <div
+                class="cate-item"
+                *ngIf="item.position !== null"
+                [routerLink]="['/', 'danh-muc', item.slug, item.slug_crc]"
+            >
+                <b routerLinkActive="active">
+                    {{ item.name }}
+                </b>
+            </div>
+        </ng-container>
+
+        <div class="cate-item" (click)="showFullCate()">
+            <fa-icon
+                [icon]="faEllipsis"
+                [ngClass]="{ active: stateShowFullCates }"
+            ></fa-icon>
+        </div>
+    </div>
+    <div class="right_header">
+        <form class="tool" (submit)="toogleInput()">
+            <input
+                type="text"
+                #input
+                placeholder="Nhập nội dung cần tìm"
+                [formControl]="searchControl"
+                (blur)="blurInput()"
+            />
+            <fa-icon
+                [icon]="faMagnifyingGlass"
+                class="searchBtn activeShowInput"
+                (click)="toogleInput()"
+            >
+            </fa-icon>
+        </form>
+    </div>
+
+    <!-- <fa-icon [icon]="faUser"></fa-icon> -->
+</div>
+
+<ng-template #profile>
+    <div class="btnSignIn">
+        <button mat-raised-button (click)="signIn()">Đăng nhập</button>
+    </div>
+</ng-template>

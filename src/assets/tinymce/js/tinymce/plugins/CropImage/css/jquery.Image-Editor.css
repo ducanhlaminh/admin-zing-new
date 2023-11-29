@@ -1,0 +1,13 @@
+.Image-Editor {
+}
+.Image-Editor-drop-area {
+}
+.Image-Editor .preview {
+}
+.Image-Editor .modal, .Image-Editor .modal.fade.in {
+  top: 3%
+}
+.Image-Editor .modal-dialog {
+  width: 900px;
+}
+

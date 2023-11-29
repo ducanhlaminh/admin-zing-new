@@ -1,0 +1,21 @@
+<p class="light">Tạo một người sử dụng mới và thêm vào trang mạng này.</p>
+<form [formGroup]="formUser" class="container">
+    <div class="edit-field">
+        <label for="email">Email</label>
+        <input type="text" formControlName="email" id="email" />
+    </div>
+    <div class="edit-field">
+        <label for="role">Vai trò</label>
+        <select formControlName="role_id">
+            <option [value]="1">Quản trị viên</option>
+            <option [value]="2">Biên tập viên</option>
+            <option [value]="3">Tổng biên tập</option>
+            <option [value]="4">Kiểm duyệt viên</option>
+        </select>
+    </div>
+    <div class="">
+        <button class="btn-create" (click)="submitCreate()">
+            <span>Tạo người dùng</span>
+        </button>
+    </div>
+</form>

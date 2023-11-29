@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bacasime+Antique&display=swap');
+
+
+h3{
+      margin: 10px 0 30px 0;
+}
+
+button {
+      height: 35px;
+      width: 200px;
+}
+
+.content-create-article {
+      padding: 15px;
+      height: 100%;
+      .crop{
+            display: none;
+      }
+}
+
+.formInput {
+      gap: 30px;
+      // margin-bottom: 20px;
+
+      .input {
+            margin-top: 10px;
+            height: 20px;
+            margin-bottom: 90px;
+            width: 400px;
+            display: block;
+      }
+
+      .btnUpload {
+            font-size: 5px;
+      }
+
+
+}
+.container{
+      .container-edit{
+            display: flex;
+            gap: 30px;
+
+            .tool-edit{
+                  flex: auto;
+            }
+            .infor{
+                  width: 270px;
+            }
+            .slug{
+                  min-width: 300px;
+            }
+      }
+      .title,.sapo {
+            margin-bottom: 15px;
+      }
+}
+form {
+      .editor{
+            width: 100%;
+            .tox-tinymce{
+                  border-radius: 0;
+            }
+
+      }
+}
+
+
+
+
+textarea{
+      border-radius: 4px;
+      height: 36px;
+      border: 1px solid #e2e2e2;
+      font-weight: 300;
+      color:#585757;
+      outline: none;
+      width: 75%;
+      padding-left: 10px ;
+}
+select{
+      width: 100%;
+      border-radius: 4px;
+      height: 50px;
+      border: 1px solid #e2e2e2;
+      color:#807f7f;
+      outline: none;
+      font-size: 16px;
+}
+
+.update-item{
+      color: #0347FF;
+       cursor: pointer;
+}
+.container-post{
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 15px;
+
+}
+.status{
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 10px;
+}
+.import-image{
+      cursor: pointer;
+      color: #0347FF;
+}
+.imgPreview{
+      height: 100%;
+      width: 100%;
+      border: 1px dotted #333;
+      border-radius: 10px;
+}
+.edit-slug{
+      width: 200px;
+}
+mat-form-field{
+      width: 100%;
+}
+.mat-expansion-panel-header-title {
+      font-size: 15px;
+    }
+.text{
+      width: 75%;
+      color: #9a9a9a;
+      font-size: 12px;
+      line-height: 20px;
+      letter-spacing: 1px;
+}
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper  {
+      display: none;
+    }
+    :host ::ng-deep .mat-mdc-form-field-infix{
+
+      padding: 0 !important;
+      display: flex;
+      align-items: center;
+    }
+    :host ::ng-deep {
+      // you can no target the inner / generated css selectors from here.
+      label {
+         display: none;
+       }
+       .mdc-line-ripple{
+            display: none;
+       }
+      //  mat-form-field{
+      //       height: 40px;
+      //  }
+
+       .mat-mdc-form-field-infix {
+            height: 40px;
+            min-height: 0;
+       }
+       .mat-mdc-icon-button .mat-mdc-button-base{
+            height: 40px;
+            width: 40px;
+       }
+       .mat-mdc-icon-button.mat-mdc-button-base {
+            width: 40px;
+            height: 40px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+            background-color: white;
+            border: 1px solid #3333;
+            border-radius: 3px;
+        }
+        .mat-form-field-appearance-fill .mat-mdc-select-arrow-wrapper {
+            transform: none
+        }
+    }
+

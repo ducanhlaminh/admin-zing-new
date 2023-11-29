@@ -1,0 +1,58 @@
+<div class="site-wrap">
+  <div
+    class="bg-img"
+    style="
+      background-image: url('https://media.mia.vn/uploads/blog-du-lich/kham-pha-toa-soan-bao-ha-noi-moi-mot-dia-diem-check-in-noi-tieng-1639927782.jpg');
+    "
+  ></div>
+  <div class="form-wrap">
+    <div class="form-inner">
+      <h1 class="title">Đăng nhập</h1>
+      <p class="caption mb-4">Vui lòng nhập thông tin tài khoản</p>
+
+      <form class="pt-3" [formGroup]="formAccount" (submit)="login()">
+        <div class="form-floating">
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder=""
+            formControlName="email"
+          />
+          <label for="email" class="lable-input">Email Address</label>
+        </div>
+
+        <div class="form-floating">
+          <span
+            class="password-show-toggle js-password-show-toggle"
+            [ngClass]="{ active: showPassword }"
+            ><span class="uil" (click)="toggleShowPassword()"></span
+          ></span>
+          <input
+            type="{{ passwordType }}"
+            class="form-control"
+            id="password"
+            placeholder=""
+            formControlName="password"
+          />
+          <label for="password" class="lable-input">Password</label>
+        </div>
+
+        <div class="d-grid mb-4">
+          <button type="submit" class="btn btn-primary">Đăng nhập</button>
+        </div>
+        <div class="social-account-wrap">
+          <h4 class="mb-4"><span>or continue with</span></h4>
+          <ul class="list-unstyled social-account d-flex">
+            <li>
+              <a href="http://localhost:4000/api/v1/auth/google"
+                ><img src="assets/icons8-google-48.png" alt="Google logo" />
+                <b>Đăng nhập với Google</b></a
+              >
+            </li>
+          </ul>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

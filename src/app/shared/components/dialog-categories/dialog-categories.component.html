@@ -1,0 +1,68 @@
+<div class="layout-dialog">
+      <div class="content-dialog">
+            <div class="header-dialog">
+                  <h3>Tất cả chuyên mục</h3>
+
+                  <button
+                        mat-icon-button
+                        color="primary"
+                        aria-label="Example icon button with a menu icon"
+                        mat-dialog-close
+                  >
+                        <fa-icon [icon]="faXmark" class="icon-close"></fa-icon>
+                  </button>
+            </div>
+            <hr />
+            <div class="categories">
+                  <div class="category" *ngFor="let item of data.categories">
+                        <h4
+                              class="name-category"
+                              mat-dialog-close
+                              [routerLink]="[
+                                    '/',
+                                    'danh-muc',
+                                    item.slug,
+                                    item.slug_crc
+                              ]"
+                        >
+                              {{ item.name }}
+                        </h4>
+                        <ng-container
+                              *ngFor="
+                                    let subItem of item.childCategories;
+                                    let count = index
+                              "
+                        >
+                              <h4
+                                    [routerLink]="[
+                                          '/',
+                                          'danh-muc',
+                                          subItem.slug,
+                                          subItem.slug_crc
+                                    ]"
+                                    mat-dialog-close
+                                    *ngIf="
+                                          !item.showFullCategories
+                                                ? count < 5
+                                                : true
+                                    "
+                                    class="sub-category-name"
+                              >
+                                    {{ subItem.name }}
+                              </h4>
+                              <small
+                                    (click)="item.showFullCategories = true"
+                                    *ngIf="
+                                          item.childCategories?.length > 4 &&
+                                          count === 5 &&
+                                          !item.showFullCategories
+                                    "
+                              >
+                                    <hr />
+                                    Xem thêm
+                              </small>
+                        </ng-container>
+                  </div>
+            </div>
+      </div>
+</div>

@@ -1,0 +1,49 @@
+<h2 mat-dialog-title>
+    Tạo chuyên mục mới :
+    <hr />
+</h2>
+<div mat-dialog-content>
+    <div>
+        <form [formGroup]="formGroup" class="content">
+            <div class="cate">
+                <label for="">Chuyên mục cha</label>
+                <select formControlName="parent_id">
+                    <option [value]="0">Không</option>
+                    <option [value]="item.id" *ngFor="let item of categories">
+                        {{ item.name }}
+                    </option>
+                </select>
+            </div>
+            <div class="formInput">
+                <div class="fieldText">
+                    <label for="">Tên chuyên mục :</label>
+                    <mat-form-field>
+                        <mat-label>Chọn ngày</mat-label>
+                        <input formControlName="name" matInput />
+                    </mat-form-field>
+                    <!-- <input matInput formControlName="name" type="text" /> -->
+                </div>
+            </div>
+            <div class="formInput">
+                <div class="fieldText">
+                    <div class="fieldText">
+                        <label for="">Đường dẫn :</label>
+                        <mat-form-field>
+                            <mat-label>Chọn ngày</mat-label>
+                            <input formControlName="slug" matInput />
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <ngx-loading [show]="true" *ngIf="loading"></ngx-loading>
+
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Hủy</button>
+        <button mat-button cdkFocusInitial (click)="submitForm()">
+            Tạo mới
+        </button>
+    </mat-dialog-actions>
+</div>
+<ngx-loading [show]="true" *ngIf="loading"></ngx-loading>

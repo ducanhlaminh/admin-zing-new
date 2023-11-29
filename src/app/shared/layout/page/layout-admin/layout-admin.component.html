@@ -1,0 +1,136 @@
+<div class="header">
+  <div [ngClass]="!showSidebar ? 'logo-hidden' : 'logo'">
+    <img src="assets/logo-text-light.svg" alt="" />
+    <mat-icon
+      class="icon"
+      *ngIf="this.showSidebar"
+      (click)="this.showSidebar = !this.showSidebar"
+      >menu</mat-icon
+    >
+  </div>
+  <div class="content-header">
+    <div class="btn">
+      <mat-icon
+        class="icon"
+        *ngIf="!this.showSidebar"
+        (click)="this.showSidebar = !this.showSidebar"
+        >menu</mat-icon
+      >
+      <button class="btn-quick" [matMenuTriggerFor]="menu">
+        <mat-icon class="icon">add_to_photos</mat-icon>
+        <span>Mới</span>
+      </button>
+      <mat-menu #menu="matMenu" class="menu">
+        <button mat-menu-item [routerLink]="['/', 'admin', 'tao-bai-viet']">
+          <span>Bài viết</span>
+        </button>
+        <button mat-menu-item [routerLink]="['/', 'admin', 'quan-ly-danh-muc']">
+          <span>Chuyên mục</span>
+        </button>
+        <button mat-menu-item>
+          <span>Người dùng</span>
+        </button>
+      </mat-menu>
+    </div>
+    <div class="profile">
+      <div class="role">
+        {{ inforUser?.user?.Role?.name }}
+      </div>
+      <div class="avatar" [matMenuTriggerFor]="profile">
+        <img [src]="inforUser?.user?.avatar" alt="" />
+        <mat-menu #profile="matMenu" class="profile">
+          <button mat-menu-item>
+            <span>Đăng xuất</span>
+          </button>
+          <button mat-menu-item>
+            <span>Về trang chủ</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="navSide" *ngIf="this.showSidebar; else sidebar_small">
+    <div class="container-item">
+      <ng-container *ngFor="let item of navItem">
+        <div
+          class="item"
+          (mouseenter)="hover(item)"
+          [routerLink]="item.url"
+          *ngIf="funcShowITem(item)"
+        >
+          <img
+            [src]="item.icon"
+            [ngClass]="{ selected: item.selected }"
+            routerLinkActive="selected"
+          />
+          <span class="lable">{{ item.title }}</span>
+        </div>
+        <div
+          class="container_bottom_item"
+          routerLinkActive="active_subItem_bottom"
+        >
+          <div *ngFor="let itemSub of item.sub; index as i">
+            <div
+              class="itemSub"
+              [routerLink]="itemSub.url"
+              routerLinkActive="active"
+              *ngIf="funcShowITem(itemSub)"
+            >
+              <div class="lable-sub">
+                {{ itemSub.title }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="content">
+    <div class="outlet">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<ng-template #sidebar_small>
+  <div class="sidebar_small">
+    <div class="container-item">
+      <ng-container *ngFor="let item of navItem">
+        <div
+          class="item"
+          (mouseenter)="hover(item)"
+          [routerLink]="item.url"
+          *ngIf="funcShowITem(item)"
+        >
+          <img
+            [src]="item.icon"
+            alt=""
+            [ngClass]="{ selected: item.selected }"
+            routerLinkActive="selected"
+          />
+          <div
+            class="container-subItem"
+            (mouseleave)="item.opened = false"
+            *ngIf="item.opened"
+          >
+            <ng-container *ngFor="let itemSub of item.sub">
+              <div
+                class="subItem"
+                [routerLink]="itemSub.url"
+                routerLinkActive="selected"
+                (click)="navigateUrl(item, $event)"
+                *ngIf="funcShowITem(itemSub)"
+              >
+                <div class="lable-sub">
+                  {{ itemSub.title }}
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
