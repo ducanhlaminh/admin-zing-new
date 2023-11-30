@@ -6,7 +6,9 @@ import { ToastrService } from "ngx-toastr";
 })
 export class ToastrCommonService {
     constructor(private toastr: ToastrService) {}
-    showToart(status: boolean, title: string = "", detail = "") {
+    showToart(status: boolean, title: string = "", detail: string = "") {
+        console.log(status, title, detail);
+
         if (status) {
             this.toastr.success(title, detail);
         } else {

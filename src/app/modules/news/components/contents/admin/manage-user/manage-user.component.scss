@@ -211,7 +211,7 @@ input[type="text"] {
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
-    height: 41px;
+    height: 40px;
     input {
       padding-left: 15px;
       outline: none;
@@ -234,6 +234,7 @@ input[type="text"] {
   gap: 5px;
   display: flex;
   align-items: center;
+  border: 1px solid transparent;
   .icon {
     font-size: 18px;
     display: flex;

@@ -1,5 +1,6 @@
 import { moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import {
     faMagnifyingGlass,
     faUser,
@@ -16,7 +17,11 @@ export class ManagePositionCategoriesComponent implements OnInit {
     faEllipsis = faEllipsis;
     faUser = faUser;
     categories: any = { selected: [], pending: [] };
-    constructor(private categoryService: CategoryService) {}
+    constructor(
+        private categoryService: CategoryService,
+        public dialogRef: MatDialogRef<any>,
+        @Inject(MAT_DIALOG_DATA) public data: any
+    ) {}
     ngOnInit(): void {
         this.categoryService.categoriesForAd$.subscribe((data: any) => {
             this.categories.pending = data?.categories.filter(

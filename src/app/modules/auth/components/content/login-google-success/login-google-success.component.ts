@@ -23,9 +23,7 @@ export class LoginGoogleSuccessComponent implements OnInit {
                     localStorage.setItem("role_id", data.role_id);
                     setTimeout(() => {
                         this.UserService.getDataInforUser();
-                        this.router.navigateByUrl(
-                            "/admin/bai-viet/tao-bai-viet"
-                        );
+                        this.router.navigateByUrl("admin");
                     }, 500);
                 } else {
                     this.router.navigateByUrl("/trang-chu");

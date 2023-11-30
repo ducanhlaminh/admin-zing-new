@@ -20,6 +20,8 @@
   --header-color: #333;
   --white-color: #fff;
   --primay-color: #0347ff;
+  --primay-color-hover: hsla(224, 100%, 51%, 0.8);
+  --primay-color-shadow: hsla(224, 100%, 51%, 0.55);
 }
 
 html,
@@ -144,3 +146,4 @@ input[type="number"] {
   outline: none;
   padding-left: 10px;
 }
+

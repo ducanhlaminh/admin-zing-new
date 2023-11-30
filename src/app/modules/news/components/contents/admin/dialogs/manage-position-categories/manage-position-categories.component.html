@@ -1,0 +1,52 @@
+<h1 mat-dialog-title>Set vị trí cho chuyên mục</h1>
+
+<div mat-dialog-content>
+    <p class="descrision">
+        Vui lòng kéo thả các thẻ Chuyên mục vào vị trí mong muốn
+    </p>
+    <div cdkDropListGroup>
+        <div
+            cdkDropList
+            cdkDropListOrientation="horizontal"
+            class="example-list"
+            [cdkDropListData]="categories?.pending"
+            (cdkDropListDropped)="drop($event)"
+        >
+            <ng-container *ngFor="let item of categories?.pending">
+                <div class="example-box" cdkDrag>
+                    {{ item?.name }}
+                </div>
+            </ng-container>
+        </div>
+
+        <div class="header">
+            <div class="logo">
+                <p class="top-header">TẠP CHÍ TRI THỨC TRỰC TUYẾN</p>
+                <img
+                    src="https://static-znews.zingcdn.me/images/logo-zing-home.svg"
+                    alt=""
+                    class="header_logo"
+                />
+            </div>
+            <div
+                class="categories"
+                cdkDropList
+                [cdkDropListData]="categories?.selected"
+                cdkDropListOrientation="horizontal"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)"
+            >
+                <ng-container *ngFor="let item of categories?.selected">
+                    <div class="example-box" cdkDrag>
+                        <span *ngIf="item.position"> {{ item?.name }}</span>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button>No Thanks</button>
+    <button mat-button cdkFocusInitial (click)="updatePosition()">Ok</button>
+</div>

@@ -15,6 +15,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { DialogComponent } from "../dialogs/dialog/dialog.component";
 import { DialogCreateCategoryComponent } from "../dialogs/dialog-create-category/dialog-create-category.component";
 import { Category, Article } from "src/app/modules/news/interfaces/news";
+import { ManagePositionCategoriesComponent } from "../dialogs/manage-position-categories/manage-position-categories.component";
 
 @Component({
     selector: "app-manage-categories",
@@ -115,6 +116,11 @@ export class ManageCategoriesComponent {
             this.getCategories();
         });
     }
+
+    showPositionCate() {
+        const dialogRef = this.dialog.open(ManagePositionCategoriesComponent);
+    }
+
     getCategories() {
         for (var key in this.formFilter?.value) {
             if (this.formFilter.value[key] === null) {
