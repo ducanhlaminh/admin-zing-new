@@ -33,6 +33,7 @@ import { ManagePositionHomeComponent } from "./components/contents/admin/manage-
 import { DialogCreateCategoryComponent } from "./components/contents/admin/dialogs/dialog-create-category/dialog-create-category.component";
 import { EditUserComponent } from "./components/contents/admin/edit-user/edit-user.component";
 import { ProfileComponent } from "./components/contents/admin/profile/profile.component";
+import { DialogSearchArticleComponent } from './components/contents/admin/dialogs/dialog-search-article/dialog-search-article.component';
 @NgModule({
     declarations: [
         DatePipe,
@@ -53,6 +54,7 @@ import { ProfileComponent } from "./components/contents/admin/profile/profile.co
         DialogCreateCategoryComponent,
         EditUserComponent,
         ProfileComponent,
+        DialogSearchArticleComponent,
     ],
     imports: [
         MatNativeDateModule,
