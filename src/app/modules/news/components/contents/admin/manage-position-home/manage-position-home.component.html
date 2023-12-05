@@ -213,7 +213,6 @@
               id="4"
               [cdkDropListData]="hotArticlesHome.left.data"
               (cdkDropListDropped)="drop($event)"
-              (cdkDragStarted)="test = 0"
               (cdkDropListEntered)="test = 0"
             >
               <ng-container
@@ -227,6 +226,7 @@
                   [ngClass]="{ shake: isUpadate }"
                   cdkDrag
                   (cdkDragEntered)="enter($event)"
+                  (cdkDragStarted)="test = 0"
                 >
                   <div *cdkDragPreview class="preivew">
                     <td class="item-drag">
@@ -256,6 +256,7 @@
                       </div>
                     </td>
                   </div>
+
                   <div
                     *cdkDragPlaceholder
                     [ngClass]="{
@@ -310,6 +311,7 @@
               [cdkDropListData]="hotArticlesHome.center.data"
               (cdkDropListDropped)="drop($event)"
               [cdkDropListEnterPredicate]="check"
+              (cdkDragStarted)="test = 1"
               (cdkDropListEntered)="test = 1"
             >
               <ng-container
@@ -320,6 +322,7 @@
                   [ngClass]="{ shake: isUpadate }"
                   cdkDrag
                   (cdkDragEntered)="enter($event)"
+                  (cdkDragStarted)="test = 1"
                 >
                   <div *cdkDragPreview class="preivew">
                     <td class="item-drag">
@@ -349,7 +352,15 @@
                       </div>
                     </td>
                   </div>
-                  <div *cdkDragPlaceholder class="center-home"></div>
+
+                  <div
+                    *cdkDragPlaceholder
+                    [ngClass]="{
+                      'left-plh': test === 0,
+                      'center-plh': test === 1,
+                      'right-plh': test === 2
+                    }"
+                  ></div>
                   <fa-icon
                     [icon]="faCircleMinus"
                     *ngIf="isUpadate"
@@ -400,6 +411,7 @@
               [cdkDropListData]="hotArticlesHome.right.data"
               (cdkDropListDropped)="drop($event)"
               (cdkDropListEntered)="test = 2"
+              (cdkDragStarted)="test = 2"
             >
               <ng-container
                 *ngFor="let item of this.hotArticlesHome.right?.data"
@@ -409,6 +421,7 @@
                   [ngClass]="{ shake: isUpadate }"
                   cdkDrag
                   (cdkDragEntered)="enter($event)"
+                  (cdkDragStarted)="test = 2"
                 >
                   <div *cdkDragPreview class="preivew">
                     <td class="item-drag">
@@ -438,7 +451,15 @@
                       </div>
                     </td>
                   </div>
-                  <div *cdkDragPlaceholder class="center-home"></div>
+
+                  <div
+                    *cdkDragPlaceholder
+                    [ngClass]="{
+                      'left-plh': test === 0,
+                      'center-plh': test === 1,
+                      'right-plh': test === 2
+                    }"
+                  ></div>
                   <fa-icon
                     [icon]="faCircleMinus"
                     *ngIf="isUpadate"
@@ -476,15 +497,7 @@
     </ng-container>
   </div>
 </div>
-<!-- <ng-template #top>
-      <div class="top"></div>
-</ng-template>
-<ng-template #bottom>
-      <div class="bottom"></div>
-</ng-template>
-<ng-template #right>
-      <div class="right"></div>
-</ng-template> -->
+
 <ng-template #left>
   <div class="left_home"></div>
 </ng-template>
