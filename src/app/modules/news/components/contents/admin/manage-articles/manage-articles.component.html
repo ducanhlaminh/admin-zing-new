@@ -125,6 +125,12 @@
               {{ item.name }}
             </option>
           </select>
+          <select formControlName="publishAt" (change)="getArticles()">
+            <option selected="selected" value="">Thời gian</option>
+            <option [value]="item.data | json" *ngFor="let item of dateArray">
+              {{ item.title }}
+            </option>
+          </select>
         </form>
       </div>
 

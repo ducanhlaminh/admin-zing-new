@@ -36,6 +36,7 @@ export class ManagePositionHomeComponent implements OnInit {
 
   selectedStatus = 1;
   environment = environment;
+  isShowCreate = { left: true, right: true, center: true };
   @ViewChild('checkAll') checkAll!: ElementRef;
   typeLayout = '1';
   categories: any[] = [];
@@ -66,6 +67,7 @@ export class ManagePositionHomeComponent implements OnInit {
   draggingOutsideSourceList: any;
   statusFull: boolean = false;
   showPlaceholder: boolean = true;
+  isPointerOverContainer!: boolean;
   constructor(
     public CategoryService: CategoryService,
     public dialog: MatDialog,
@@ -100,8 +102,6 @@ export class ManagePositionHomeComponent implements OnInit {
     this.draggingOutsideSourceList = number;
   }
   drop(event: any) {
-    console.log(1);
-
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -159,6 +159,9 @@ export class ManagePositionHomeComponent implements OnInit {
         });
       });
     }
+  }
+  dragDropped(event: CdkDragDrop<string[]>) {
+    this.isPointerOverContainer = event.isPointerOverContainer;
   }
   getArticles() {
     this.NewsService.getAllByAd(this.formSearch.value).subscribe(
