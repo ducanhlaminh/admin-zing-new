@@ -133,9 +133,7 @@ mat-form-field {
 }
 :host ::ng-deep {
   // you can no target the inner / generated css selectors from here.
-  label {
-    display: none;
-  }
+
   .mat-mdc-text-field-wrapper {
     background: white;
   }
@@ -183,6 +181,8 @@ mat-form-field {
   //       border: 1px solid #3333;
   //       border-radius: 3px;
   //   }
+
+
   .mat-form-field-appearance-fill .mat-mdc-select-arrow-wrapper {
     transform: none;
   }

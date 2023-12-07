@@ -214,6 +214,31 @@ table {
 //       width: 70%;
 //       padding-left: 10px;
 // }
+.action {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  select {
+    width: 200px;
+  }
+  .btn-action {
+    cursor: pointer;
+    background: transparent;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #0347ff;
+    gap: 5px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    border: 1px solid #0347ff;
+  }
+  .btn-filter:hover {
+    background: var(--primay-color);
+    border: 1px solid var(--primay-color);
+    color: #fff;
+  }
+}
 .filter-bottom {
   display: flex;
   gap: 15px;
@@ -223,31 +248,11 @@ table {
   .container-action {
     display: flex;
     gap: 15px;
-
-    .action {
-      display: flex;
+    .filter-container{
       gap: 15px;
-      select {
-        width: 200px;
-      }
-      .btn-action {
-        cursor: pointer;
-        background: transparent;
-        border-radius: 5px;
-        font-weight: 600;
-        color: #0347ff;
-        gap: 5px;
-        display: flex;
-        align-items: center;
-        font-weight: bold;
-        border: 1px solid #0347ff;
-      }
-      .btn-filter:hover {
-        background: var(--primay-color);
-        border: 1px solid var(--primay-color);
-        color: #fff;
-      }
+      display: flex;
     }
+
   }
 
   .search {
@@ -400,4 +405,65 @@ table {
 .container-content {
   background: white;
   padding: 20px;
+}
+:host ::ng-deep {
+  // you can no target the inner / generated css selectors from here.
+
+  .mat-mdc-text-field-wrapper {
+    background: white;
+  }
+  .mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field
+    .mdc-notched-outline__notch {
+    display: none;
+  }
+  .mat-mdc-form-field-infix {
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+  }
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+  .mdc-line-ripple {
+    display: none;
+  }
+  // mat-form-field {
+  //   height: 40px;
+  // }
+
+  .mat-mdc-form-field-infix {
+    height: 40px;
+    min-height: 0;
+  }
+
+  .mat-mdc-icon-button.mat-mdc-button-base {
+    width: 40px;
+    height: 40px;
+    padding: 7px;
+    box-sizing: border-box;
+    padding: 10px;
+    align-items: center;
+    display: flex;
+  }
+  .mdc-icon-button svg {
+    width: 22px;
+    height: 22px;
+    margin: auto;
+  }
+  mat-label {
+    display: none;
+  }
+  .mat-mdc-icon-button .mat-mdc-button-touch-target {
+    width: 40px;
+    height: 40px;
+  }
+  //   .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  //       background-color: white;
+  //       border: 1px solid #3333;
+  //       border-radius: 3px;
+  //   }
+  .mat-form-field-appearance-fill .mat-mdc-select-arrow-wrapper {
+    transform: none;
+  }
+
 }

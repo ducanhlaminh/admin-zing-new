@@ -91,6 +91,21 @@ export class EditArticleComponent {
             }
         });
     }
+    toggleRequiredFields() {
+        const formControls = this.formDetail.controls;
+        console.log(this.formDetail.value.status);
+
+        Object.keys(formControls).forEach((key) => {
+            const control = formControls[key];
+            if (this.formDetail.value.status) {
+                control.setValidators([Validators.required]);
+            } else {
+                control.clearValidators();
+            }
+
+            control.updateValueAndValidity();
+        });
+    }
     openDialogSetAvatar(): void {
         const inputElement = document.createElement("input");
         // Thêm thuộc tính type và multiple vào đối tượng thuộc tính của input element
@@ -312,7 +327,7 @@ export class EditArticleComponent {
     }
     submitFormCreate() {
         try {
-            if (1) {
+            if (this.formDetail.valid) {
                 this.loading = true;
 
                 const file = new File(

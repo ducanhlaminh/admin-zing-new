@@ -1,158 +1,172 @@
 <form class="container" [formGroup]="formDetail">
-  <h3>Chỉnh sửa bài viết</h3>
-  <div class="title">
-    <input
-      type="text"
-      name=""
-      value=""
-      placeholder="Thêm tiêu đề"
-      formControlName="title"
-    />
-  </div>
-  <div class="sapo">
-    <input
-      type="text"
-      name=""
-      value=""
-      placeholder="Sapo bài viết"
-      formControlName="sapo"
-    />
-    <p class="text">
-      Chuyên mục khác với thẻ, bạn có thể sử dụng nhiều cấp chuyên mục. Ví dụ:
-      Trong chuyên mục nhạc, bạn có chuyên mục con là nhạc Pop, nhạc Jazz. Việc
-      này hoàn toàn là tùy theo ý bạn.
-    </p>
-  </div>
-  <div class="slug">
-    <input
-      type="text"
-      name=""
-      value=""
-      placeholder="vd : duong-dan"
-      formControlName="slug"
-    />
-    <p class="text">
-      Là nội dung đường dẫn tới trang chi tiết của bài viết đó .<br />
-      Ví dụ : lang-nghe-loi-thi-tham-voi-dong-song
-    </p>
-  </div>
-  <div class="container-edit">
-    <div class="tool-edit">
-      <editor
-        class="editor"
-        plugins=" fullscreen table emoticons link example lists code media quickbars "
-        menubar="file edit insert view format table tools help "
-        [init]="tinyMCEInit"
-        formControlName="content"
-        toolbar="myCustomToolbarButton mycustombutton bold italic underline | fontfamily fontsizeinput  | forecolor backcolor | alignleft aligncenter alignright alignjustify | numlist bullist |indent outdent rtl ltr | table link | preivew overview "
-      >
-      </editor>
+    <h2>Cập nhật thông tin bài viết</h2>
+    <small>Vui lòng nhập các trường thông tin </small>
+    <hr />
+    <div class="title">
+        <label for="">Tiêu đề bài viết :</label>
+        <mat-form-field appearance="outline">
+            <input
+                type="text"
+                placeholder="Tiêu đề bài viết"
+                formControlName="title"
+                matInput
+            />
+        </mat-form-field>
     </div>
-    <div class="infor">
-      <mat-accordion>
-        <mat-expansion-panel
-          [expanded]="true"
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        >
-          <mat-expansion-panel-header>
-            <mat-panel-title> Đăng </mat-panel-title>
-          </mat-expansion-panel-header>
-          <div class="container-post">
-            <div class="item-status">
-              <div class="status">
-                <b>Trạng thái bài viết :</b>
-              </div>
-              <div class="container-categories">
-                <mat-form-field>
-                  <mat-label>Select an option</mat-label>
-                  <mat-select formControlName="status">
-                    <mat-option
-                      *ngFor="let item of statusOptions"
-                      [value]="item.status"
-                    >
-                      {{ item.name }}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="item-status">
-              <div class="status">
-                <b>Chọn ngày phát hành :</b>
-              </div>
-              <div class="container-categories">
-                <mat-form-field>
-                  <mat-label>Chọn ngày</mat-label>
-                  <input
-                    formControlName="publishAt"
-                    matInput
-                    [matDatepicker]="picker"
-                  />
-                  <mat-datepicker-toggle
-                    matIconSuffix
-                    [for]="picker"
-                  ></mat-datepicker-toggle>
-                  <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
-              </div>
-            </div>
-          </div>
-          <button class="btn-create" (click)="submitFormCreate()">
-            <b>Đăng bài</b>
-          </button>
-        </mat-expansion-panel>
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        >
-          <mat-expansion-panel-header>
-            <mat-panel-title> Chuyên mục </mat-panel-title>
-          </mat-expansion-panel-header>
-          <div class="container-categories">
-            <mat-form-field>
-              <mat-label>Vui lòng chọn chuyên mục</mat-label>
-              <mat-select formControlName="categoryId">
-                <mat-option
-                  *ngFor="let item of optionCategories"
-                  [value]="item.id"
+    <div class="sapo">
+        <label for="">Sapo bài viết :</label>
+        <mat-form-field appearance="outline">
+            <input
+                type="text"
+                placeholder="Sapo bài viết"
+                formControlName="sapo"
+                matInput
+            />
+        </mat-form-field>
+
+        <p class="text">
+            Chuyên mục khác với thẻ, bạn có thể sử dụng nhiều cấp chuyên mục. Ví
+            dụ: Trong chuyên mục nhạc, bạn có chuyên mục con là nhạc Pop, nhạc
+            Jazz. Việc này hoàn toàn là tùy theo ý bạn.
+        </p>
+    </div>
+    <div class="slug">
+        <label for="">Đường dẫn bài viết :</label>
+        <mat-form-field appearance="outline">
+            <input
+                type="text"
+                matInput
+                placeholder="Đường dẫn bài viết"
+                formControlName="slug"
+            />
+        </mat-form-field>
+
+        <p class="text">
+            Là nội dung đường dẫn tới trang chi tiết của bài viết đó .<br />
+            Ví dụ : lang-nghe-loi-thi-tham-voi-dong-song
+        </p>
+    </div>
+    <div class="container-edit">
+        <div class="tool-edit">
+            <editor
+                class="editor"
+                plugins=" fullscreen table emoticons link example lists code media quickbars "
+                menubar="file edit insert view format table tools help "
+                [init]="tinyMCEInit"
+                formControlName="content"
+                toolbar="myCustomToolbarButton mycustombutton bold italic underline | fontfamily fontsizeinput  | forecolor backcolor | alignleft aligncenter alignright alignjustify | numlist bullist |indent outdent rtl ltr | table link | preivew overview "
+            >
+            </editor>
+        </div>
+        <div class="infor">
+            <mat-accordion>
+                <mat-expansion-panel
+                    [expanded]="true"
+                    (opened)="panelOpenState = true"
+                    (closed)="panelOpenState = false"
                 >
-                  {{ item.name }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </mat-expansion-panel>
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        >
-          <mat-expansion-panel-header>
-            <mat-panel-title> Ảnh đại diện </mat-panel-title>
-          </mat-expansion-panel-header>
-          <div class="import-image" (click)="openDialogSetAvatar()">
-            <p>
-              {{ imgPreview ? "Thay ảnh đại diện" : "Đặt ảnh đại diện" }}
-            </p>
-            <div class="">
-              <img
-                [src]="
-                  'http://localhost:4000/api/v1/articles/avatar?slug_crc=' +
-                  formDetail.value.avatar +
-                  '&height=222&width=222'
-                "
-                alt=""
-                class="imgPreview"
-              />
-            </div>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title> Đăng </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="container-post">
+                        <div class="item-status">
+                            <div class="status">
+                                <b>Trạng thái bài viết :</b>
+                            </div>
+                            <div class="container-categories">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Select an option</mat-label>
+                                    <mat-select
+                                        formControlName="status"
+                                        (selectionChange)="
+                                            this.toggleRequiredFields()
+                                        "
+                                    >
+                                        <mat-option
+                                            *ngFor="let item of statusOptions"
+                                            [value]="item.status"
+                                        >
+                                            {{ item.name }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="item-status">
+                            <div class="status">
+                                <b>Chọn ngày phát hành :</b>
+                            </div>
+                            <div class="container-categories">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Chọn ngày</mat-label>
+                                    <input
+                                        formControlName="publishAt"
+                                        matInput
+                                        [matDatepicker]="picker"
+                                    />
+                                    <mat-error
+                                        >Thông tin không hợp lệ</mat-error
+                                    >
+                                    <mat-datepicker-toggle
+                                        matIconSuffix
+                                        [for]="picker"
+                                    ></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-create" (click)="submitFormCreate()">
+                        <b>Đăng bài</b>
+                    </button>
+                </mat-expansion-panel>
+                <mat-expansion-panel
+                    (opened)="panelOpenState = true"
+                    (closed)="panelOpenState = false"
+                >
+                    <mat-expansion-panel-header>
+                        <mat-panel-title> Chuyên mục </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="container-categories">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Vui lòng chọn chuyên mục</mat-label>
+                            <mat-select formControlName="categoryId">
+                                <mat-option
+                                    *ngFor="let item of optionCategories"
+                                    [value]="item.id"
+                                >
+                                    {{ item.name }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </mat-expansion-panel>
+                <mat-expansion-panel
+                    (opened)="panelOpenState = true"
+                    (closed)="panelOpenState = false"
+                >
+                    <mat-expansion-panel-header>
+                        <mat-panel-title> Ảnh đại diện </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="import-image" (click)="openDialogSetAvatar()">
+                        <p>
+                            {{
+                                imgPreview
+                                    ? "Thay ảnh đại diện"
+                                    : "Đặt ảnh đại diện"
+                            }}
+                        </p>
+                        <div class="" *ngIf="imgPreview">
+                            <img [src]="imgPreview" alt="" class="imgPreview" />
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
     </div>
-  </div>
 </form>
 
 <ng-template #image>
-  <img [src]="imgPreview" alt="" class="imgPreview" />
+    <img [src]="imgPreview" alt="" class="imgPreview" />
 </ng-template>
 <ngx-loading [show]="true" *ngIf="loading"></ngx-loading>

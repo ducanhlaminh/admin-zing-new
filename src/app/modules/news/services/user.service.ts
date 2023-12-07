@@ -33,7 +33,7 @@ export class UserService {
             }
         });
     }
-    getAll(data: any) {
+    getAll(data: any = null) {
         return this.http.get(environment.API_ADMIN_USER, {
             params: { ...data },
         });

@@ -48,14 +48,10 @@ const routes: Routes = [
                 ],
             },
             {
-                path: "quan-ly-vi-tri-trang-chu",
+                path: "quan-ly-vi-tri-bai-viet/:slug-cate",
                 component: ManagePositionHomeComponent,
             },
 
-            {
-                path: "quan-ly-vi-tri-chuyen-muc",
-                component: ManagePositionCategoriesComponent,
-            },
             {
                 path: "bai-viet",
                 redirectTo: "bai-viet/quan-ly-bai-viet",
