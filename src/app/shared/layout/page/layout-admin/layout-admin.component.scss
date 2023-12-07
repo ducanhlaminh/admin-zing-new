@@ -98,7 +98,7 @@
       align-items: center;
       gap: 50px;
       .btn-quick {
-        background: #0347ff;
+        background: var(--primay-color);
         padding: 5px 15px;
         border-radius: 5px;
         border: 0;
@@ -177,7 +177,7 @@
         cursor: pointer;
         position: relative;
         &:hover {
-          background: #0347ff;
+          background: var(--primay-color);
           color: #fff;
           border-top-left-radius: 5px;
           border-bottom-left-radius: 5px;
@@ -215,7 +215,7 @@
           .lable,
           .icon-module,
           .icon-arrow {
-            color: #0347ff;
+            color: var(--primay-color);
             cursor: pointer;
           }
         }
@@ -238,7 +238,7 @@
               font-weight: 600;
 
               &:hover {
-                color: #0347ff;
+                color: var(--primay-color);
                 cursor: pointer;
               }
             }
@@ -264,7 +264,7 @@
 }
 
 .active {
-  background: #0347ff;
+  background: var(--primay-color);
   color: #fff;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -314,7 +314,7 @@
           font-weight: 600;
 
           &:hover {
-            color: #0347ff;
+            color: var(--primay-color);
             cursor: pointer;
           }
         }
@@ -331,7 +331,6 @@ mat-icon {
   display: none;
   border-left: 3px solid #c1bebe;
   position: relative;
-
 }
 .active_subItem_bottom {
   display: flex;
@@ -339,7 +338,7 @@ mat-icon {
   gap: 5px;
 }
 
-.side-active{
+.side-active {
   content: "";
   display: block;
   position: absolute;

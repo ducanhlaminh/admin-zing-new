@@ -1,422 +1,381 @@
 <div class="container">
-    <form
-        class="container-coloumn"
-        *ngIf="showConfig"
-        [formGroup]="coloumnForm"
-    >
-        <h4>Cột</h4>
-        <div class="list-coloumns">
-            <div class="item-coloumn" *ngIf="this.configUser.coloumns.author">
-                <input
-                    type="checkbox"
-                    name=""
-                    id="author"
-                    formControlName="author"
-                />
-                <label for="author">Tác giả</label>
-            </div>
-            <div class="item-coloumn" *ngIf="this.configUser.coloumns.category">
-                <input
-                    type="checkbox"
-                    name=""
-                    id="category"
-                    formControlName="category"
-                />
-                <label for="category"> Chuyên mục </label>
-            </div>
+  <form class="container-coloumn" *ngIf="showConfig" [formGroup]="coloumnForm">
+    <h4>Cột</h4>
+    <div class="list-coloumns">
+      <div class="item-coloumn" *ngIf="this.configUser.coloumns.author">
+        <input type="checkbox" name="" id="author" formControlName="author" />
+        <label for="author">Tác giả</label>
+      </div>
+      <div class="item-coloumn" *ngIf="this.configUser.coloumns.category">
+        <input
+          type="checkbox"
+          name=""
+          id="category"
+          formControlName="category"
+        />
+        <label for="category"> Chuyên mục </label>
+      </div>
 
-            <div class="item-coloumn" *ngIf="this.configUser.coloumns.views">
-                <input
-                    type="checkbox"
-                    name=""
-                    id="views"
-                    formControlName="views"
-                />
-                <label for="views">Lượt đọc </label>
-            </div>
-            <div class="item-coloumn" *ngIf="this.configUser.coloumns.date">
-                <input
-                    type="checkbox"
-                    name=""
-                    id="date"
-                    formControlName="date"
-                />
-                <label for="date">Thời gian</label>
-            </div>
-        </div>
-        <h4>Hàng</h4>
-        <div class="list-coloumns">
-            <label for="">Số đối tượng trên một trang</label>
-            <input type="number" formControlName="rows" />
-        </div>
-        <button class="btn-create" (click)="saveConfig()">
-            <span>Áp dụng</span>
-        </button>
-    </form>
-    <div class="container-btn">
-        <button class="show-coloumn" (click)="showConfig = !showConfig">
-            Tùy chỉnh hiển thị
-        </button>
+      <div class="item-coloumn" *ngIf="this.configUser.coloumns.views">
+        <input type="checkbox" name="" id="views" formControlName="views" />
+        <label for="views">Lượt đọc </label>
+      </div>
+      <div class="item-coloumn" *ngIf="this.configUser.coloumns.date">
+        <input type="checkbox" name="" id="date" formControlName="date" />
+        <label for="date">Thời gian</label>
+      </div>
     </div>
+    <h4>Hàng</h4>
+    <div class="list-coloumns">
+      <label for="">Số đối tượng trên một trang</label>
+      <input type="number" formControlName="rows" />
+    </div>
+    <button class="btn-create" (click)="saveConfig()">
+      <span>Áp dụng</span>
+    </button>
+  </form>
+  <div class="container-btn">
+    <button class="show-coloumn" (click)="showConfig = !showConfig">
+      Tùy chỉnh hiển thị
+    </button>
+  </div>
 </div>
 
 <div class="title">
-    <h2>Tất cả bài viết :</h2>
-    <button
-        class="btn-create"
-        [routerLink]="['/', 'admin', 'bai-viet', 'tao-bai-viet']"
-    >
-        <mat-icon class="icon">add_to_photos</mat-icon>
-        <span>Bài viết mới</span>
-    </button>
+  <h2>Tất cả bài viết :</h2>
+  <button
+    class="btn-create"
+    [routerLink]="['/', 'admin', 'bai-viet', 'tao-bai-viet']"
+  >
+    <mat-icon class="icon">add_to_photos</mat-icon>
+    <span>Bài viết mới</span>
+  </button>
 </div>
 <div class="container-content">
-    <div>
-        <div class="filter">
-            <button
-                class="btn-toggle"
-                [matBadge]="length"
-                matBadgeColor="primary"
-                [matBadgeHidden]="
-                    selectedStatus === 2 ||
-                    selectedStatus === 3 ||
-                    selectedStatus === 4
-                "
-                [ngClass]="{ 'selected-filter': selectedStatus === 1 }"
-                (click)="this.changeFilter(1)"
+  <div>
+    <div class="filter">
+      <button
+        class="btn-toggle"
+        [matBadge]="length"
+        matBadgeColor="primary"
+        [matBadgeHidden]="
+          selectedStatus === 2 || selectedStatus === 3 || selectedStatus === 4
+        "
+        [ngClass]="{ 'selected-filter': selectedStatus === 1 }"
+        (click)="this.changeFilter(1)"
+      >
+        <span>Tất cả</span>
+      </button>
+      <button
+        class="btn-toggle"
+        [matBadge]="length"
+        matBadgeColor="primary"
+        [matBadgeHidden]="
+          selectedStatus === 1 || selectedStatus === 3 || selectedStatus === 4
+        "
+        [ngClass]="{ 'selected-filter': selectedStatus === 2 }"
+        (click)="this.changeFilter(2)"
+      >
+        <span>Đã xuất bản</span>
+      </button>
+      <button
+        class="btn-toggle"
+        [matBadge]="length"
+        matBadgeColor="primary"
+        [matBadgeHidden]="
+          selectedStatus === 2 || selectedStatus === 1 || selectedStatus === 4
+        "
+        [ngClass]="{ 'selected-filter': selectedStatus === 3 }"
+        (click)="this.changeFilter(3)"
+      >
+        <span>Chờ xử lý</span>
+      </button>
+      <button
+        class="btn-toggle"
+        [matBadge]="length"
+        matBadgeColor="primary"
+        [matBadgeHidden]="
+          selectedStatus === 2 || selectedStatus === 1 || selectedStatus === 3
+        "
+        [ngClass]="{ 'selected-filter': selectedStatus === 4 }"
+        (click)="this.changeFilter(4)"
+      >
+        <span>Bản nháp</span>
+      </button>
+    </div>
+    <div class="filter-bottom">
+      <div class="container-action">
+        <form [formGroup]="formFilter" class="filter-container">
+          <mat-form-field appearance="outline">
+            <mat-select
+              formControlName="category_id"
+              (selectionChange)="getArticles()"
             >
-                <span>Tất cả</span>
-            </button>
-            <button
-                class="btn-toggle"
-                [matBadge]="length"
-                matBadgeColor="primary"
-                [matBadgeHidden]="
-                    selectedStatus === 1 ||
-                    selectedStatus === 3 ||
-                    selectedStatus === 4
-                "
-                [ngClass]="{ 'selected-filter': selectedStatus === 2 }"
-                (click)="this.changeFilter(2)"
+              <mat-option value="">Chuyên mục</mat-option>
+              <mat-option
+                [value]="item.id"
+                *ngFor="let item of optionCategories"
+              >
+                {{ item.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-select
+              formControlName="publishAt"
+              (selectionChange)="getArticles()"
             >
-                <span>Đã xuất bản</span>
-            </button>
-            <button
-                class="btn-toggle"
-                [matBadge]="length"
-                matBadgeColor="primary"
-                [matBadgeHidden]="
-                    selectedStatus === 2 ||
-                    selectedStatus === 1 ||
-                    selectedStatus === 4
-                "
-                [ngClass]="{ 'selected-filter': selectedStatus === 3 }"
-                (click)="this.changeFilter(3)"
+              <mat-option value="">Thời gian</mat-option>
+              <mat-option
+                [value]="item.data | json"
+                *ngFor="let item of dateArray"
+                >{{ item.title }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-select
+              formControlName="created_user_id"
+              multiple
+              (selectionChange)="getArticles()"
             >
-                <span>Bản nháp</span>
-            </button>
-            <button
-                class="btn-toggle selected-filter btn-user"
-                *ngIf="this.selectName"
-            >
-                <span>{{ selectName.userName }}</span>
-                <fa-icon
-                    [icon]="faXmarkCircle"
-                    class="close-btn"
-                    (click)="this.selectName = null; this.getArticles()"
-                ></fa-icon>
-            </button>
+              <mat-option value="">Tất cả các tác giả</mat-option>
+              <mat-option *ngFor="let item of user" [value]="item.id">{{
+                item.userName
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </div>
+
+      <form [formGroup]="formFilter" class="search">
+        <div class="input">
+          <input
+            type="text"
+            formControlName="title"
+            placeholder="Tiêu đề bài viết"
+          />
+          <fa-icon [icon]="faMagnifyingGlass" class="icon-search"></fa-icon>
         </div>
-        <div class="filter-bottom">
-            <div class="container-action">
-                <form [formGroup]="formFilter" class="filter-container">
-                    <mat-form-field appearance="outline">
-                        <mat-select
-                            formControlName="category_id"
-                            (selectionChange)="getArticles()"
-                        >
-                            <mat-option value="">Chuyên mục</mat-option>
-                            <mat-option
-                                [value]="item.id"
-                                *ngFor="let item of optionCategories"
-                            >
-                                {{ item.name }}</mat-option
-                            >
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                        <mat-select
-                            formControlName="publishAt"
-                            (selectionChange)="getArticles()"
-                        >
-                            <mat-option value="">Thời gian</mat-option>
-                            <mat-option
-                                [value]="item.data | json"
-                                *ngFor="let item of dateArray"
-                                >{{ item.title }}</mat-option
-                            >
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                        <mat-select
-                            formControlName="created_user_id"
-                            multiple
-                            (selectionChange)="getArticles()"
-                        >
-                            <mat-option value="">Tất cả các tác giả</mat-option>
-                            <mat-option
-                                *ngFor="let item of user"
-                                [value]="item.id"
-                                >{{ item.userName }}</mat-option
-                            >
-                        </mat-select>
-                    </mat-form-field>
-                </form>
+
+        <button class="btn-create" (click)="search()">
+          <span>Tìm bài viết</span>
+        </button>
+      </form>
+    </div>
+    <form class="action">
+      <mat-form-field appearance="outline">
+        <mat-select
+          formControlName="publishAt"
+          (selectionChange)="getArticles()"
+        >
+          <mat-option value="">Hành động</mat-option>
+          <mat-option value="2">Xóa</mat-option>
+          <mat-option value="3">Xuất bản</mat-option>
+          <mat-option value="4">Thu hồi</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button
+        class="btn-action btn-filter"
+        (click)="actionFn(selectedAction)"
+        [disabled]="selectedAction === '1'"
+      >
+        <span>Áp dụng</span>
+      </button>
+    </form>
+  </div>
+  <table>
+    <tr>
+      <th class="select-all">
+        <input
+          type="checkbox"
+          name=""
+          id=""
+          (change)="checkAllFn($event)"
+          #checkAll
+        />
+      </th>
+      <th *ngIf="this.coloumns?.title">
+        <div class="header-name">
+          <span>Tên bài viết</span>
+        </div>
+      </th>
+      <th *ngIf="this.coloumns?.author">
+        <div class="header-view">
+          <span>Tác giả</span>
+        </div>
+      </th>
+      <th *ngIf="this.coloumns?.category">
+        <div class="header-cate">
+          <span>Chuyên mục</span>
+        </div>
+      </th>
+      <th *ngIf="this.coloumns?.views">
+        <div class="header-view">
+          <span>Lượt đọc</span>
+        </div>
+      </th>
+
+      <th *ngIf="this.coloumns?.date">
+        <div class="header-date-published">
+          <span>Thời gian</span>
+        </div>
+      </th>
+    </tr>
+    <ng-container *ngFor="let item of articles; let i = index">
+      <ng-container *ngIf="!item.edit; else editQuick">
+        <tr class="" [ngClass]="{ selected: item.opened }">
+          <td class="item-stt">
+            <div class="">
+              <input
+                type="checkbox"
+                name=""
+                id=""
+                [(ngModel)]="item.selected"
+                (ngModelChange)="changeSelected()"
+              />
+            </div>
+          </td>
+          <td class="item-name" *ngIf="this.coloumns?.title">
+            <div class="title-status">
+              <p>{{ item?.title }}</p>
+              <div class="pending" *ngIf="item.status === 0">Bản nháp</div>
+              <div class="process" *ngIf="item.status === 2">Chờ xử lý</div>
+              <div class="success" *ngIf="item.status === 1">Xuất bản</div>
             </div>
 
-            <form [formGroup]="formFilter" class="search">
-                <div class="input">
-                    <input
-                        type="text"
-                        formControlName="title"
-                        placeholder="Tiêu đề bài viết"
-                    />
-                    <fa-icon
-                        [icon]="faMagnifyingGlass"
-                        class="icon-search"
-                    ></fa-icon>
-                </div>
+            <div class="">
+              <small
+                [routerLink]="[
+                  '/admin/bai-viet/',
+                  'chinh-sua-bai-viet',
+                  item.slug,
+                  item.slug_crc
+                ]"
+                >Chỉnh sửa</small
+              >
+              <small class="update-item" (click)="open(item)">Sửa nhanh</small>
+              <small (click)="deleteItem(item)" class="delete-item">Xóa</small>
+              <small (click)="viewDetail(item)">Xem</small>
+            </div>
+          </td>
+          <td class="item-cate" *ngIf="this.coloumns?.author">
+            <b (click)="this.selectName = item?.User; this.getArticles()">{{
+              item?.User?.userName
+            }}</b>
+          </td>
+          <td class="item-cate" *ngIf="this.coloumns?.category">
+            <span>{{
+              item.new_articles_categories.length > 0
+                ? item.new_articles_categories[0].category.name
+                : ""
+            }}</span>
+          </td>
+          <td class="item-view" *ngIf="this.coloumns?.views">
+            <span>{{ item.views }}</span>
+          </td>
+          <td class="item-date-published" *ngIf="this.coloumns?.date">
+            <b>
+              {{ item.status === 1 ? "Đã xuất bản" : "Lần sửa gần nhất" }}
+            </b>
 
-                <button class="btn-create" (click)="search()">
-                    <span>Tìm bài viết</span>
-                </button>
-            </form>
-        </div>
-        <div class="action" *ngIf="showAction">
-            <select [(ngModel)]="selectedAction">
-                <option value="1">Hành động</option>
-                <option value="2">Xóa</option>
-                <option value="3">Xuất bản</option>
-                <option value="4">Thu hồi</option>
-            </select>
-            <button
-                class="btn-action btn-filter"
-                (click)="actionFn(selectedAction)"
-                [disabled]="selectedAction === '1'"
-            >
-                <span>Áp dụng</span>
-            </button>
-        </div>
-    </div>
-    <table>
-        <tr>
-            <th class="select-all">
-                <input
-                    type="checkbox"
-                    name=""
-                    id=""
-                    (change)="checkAllFn($event)"
-                    #checkAll
-                />
-            </th>
-            <th *ngIf="this.coloumns?.title">
-                <div class="header-name">
-                    <span>Tên bài viết</span>
-                </div>
-            </th>
-            <th *ngIf="this.coloumns?.author">
-                <div class="header-view">
-                    <span>Tác giả</span>
-                </div>
-            </th>
-            <th *ngIf="this.coloumns?.category">
-                <div class="header-cate">
-                    <span>Chuyên mục</span>
-                </div>
-            </th>
-            <th *ngIf="this.coloumns?.views">
-                <div class="header-view">
-                    <span>Lượt đọc</span>
-                </div>
-            </th>
-
-            <th *ngIf="this.coloumns?.date">
-                <div class="header-date-published">
-                    <span>Thời gian</span>
-                </div>
-            </th>
+            <span>{{ item.publishAt | datePipe }}</span>
+          </td>
         </tr>
-        <ng-container *ngFor="let item of articles; let i = index">
-            <ng-container *ngIf="!item.edit; else editQuick">
-                <tr class="" [ngClass]="{ selected: item.opened }">
-                    <td class="item-stt">
-                        <div class="">
-                            <input
-                                type="checkbox"
-                                name=""
-                                id=""
-                                [(ngModel)]="item.selected"
-                                (ngModelChange)="changeSelected()"
-                            />
-                        </div>
-                    </td>
-                    <td class="item-name" *ngIf="this.coloumns?.title">
-                        <div class="title-status">
-                            <p>{{ item?.title }}</p>
-                            <div class="pending" *ngIf="item.status === 0">
-                                Bản nháp
-                            </div>
-                        </div>
-
-                        <div class="">
-                            <small
-                                [routerLink]="[
-                                    '/admin/bai-viet/',
-                                    'chinh-sua-bai-viet',
-                                    item.slug,
-                                    item.slug_crc
-                                ]"
-                                >Chỉnh sửa</small
-                            >
-                            <small class="update-item" (click)="open(item)"
-                                >Sửa nhanh</small
-                            >
-                            <small
-                                (click)="deleteItem(item)"
-                                class="delete-item"
-                                >Xóa</small
-                            >
-                            <small (click)="viewDetail(item)">Xem</small>
-                        </div>
-                    </td>
-                    <td class="item-cate" *ngIf="this.coloumns?.author">
-                        <b
-                            (click)="
-                                this.selectName = item?.User; this.getArticles()
-                            "
-                            >{{ item?.User?.userName }}</b
+      </ng-container>
+      <ng-template #editQuick>
+        <tr>
+          <td colspan="7" class="edit-quick">
+            <form [formGroup]="formEdit">
+              <h4>SỬA NHANH</h4>
+              <div class="container-edit">
+                <div class="title-slug">
+                  <div class="edit-title">
+                    <label for="title">Tiêu đề</label>
+                    <mat-form-field appearance="outline">
+                      <input
+                        type="text"
+                        id="title"
+                        value=""
+                        formControlName="title"
+                        matInput
+                      />
+                    </mat-form-field>
+                  </div>
+                  <div class="edit-slug">
+                    <label for="slug">Đường dẫn</label>
+                    <mat-form-field appearance="outline">
+                      <input
+                        type="text"
+                        id="slug"
+                        name=""
+                        value=""
+                        formControlName="slug"
+                        matInput
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="category-status">
+                  <div class="edit-title">
+                    <label for="">Chuyên mục</label>
+                    <mat-form-field appearance="outline">
+                      <mat-select formControlName="category_id">
+                        <mat-option value="">Tất cả các tác giả</mat-option>
+                        <mat-option
+                          [value]="item.id"
+                          *ngFor="let item of optionCategories"
+                          >{{ item.name }}</mat-option
                         >
-                    </td>
-                    <td class="item-cate" *ngIf="this.coloumns?.category">
-                        <span>{{
-                            item.new_articles_categories.length > 0
-                                ? item.new_articles_categories[0].category.name
-                                : ""
-                        }}</span>
-                    </td>
-                    <td class="item-view" *ngIf="this.coloumns?.views">
-                        <span>{{ item.views }}</span>
-                    </td>
-                    <td class="item-date-published" *ngIf="this.coloumns?.date">
-                        <b>
-                            {{
-                                item.status === 1
-                                    ? "Đã xuất bản"
-                                    : "Lần sửa gần nhất"
-                            }}
-                        </b>
-
-                        <span>{{ item.publishAt | datePipe }}</span>
-                    </td>
-                </tr>
-            </ng-container>
-            <ng-template #editQuick>
-                <tr>
-                    <td colspan="7" class="edit-quick">
-                        <form [formGroup]="formEdit">
-                            <h4>SỬA NHANH</h4>
-                            <div class="container-edit">
-                                <div class="title-slug">
-                                    <div class="edit-title">
-                                        <label for="title">Tiêu đề</label>
-                                        <input
-                                            type="text"
-                                            id="title"
-                                            value=""
-                                            formControlName="title"
-                                        />
-                                    </div>
-                                    <div class="edit-slug">
-                                        <label for="slug">Đường dẫn</label>
-                                        <input
-                                            type="text"
-                                            id="slug"
-                                            name=""
-                                            value=""
-                                            formControlName="slug"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="category-status">
-                                    <div class="edit-title">
-                                        <label for="">Chuyên mục</label>
-                                        <select formControlName="category_id">
-                                            <option
-                                                [value]="item.id"
-                                                *ngFor="
-                                                    let item of optionCategories
-                                                "
-                                            >
-                                                {{ item.name }}
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class="edit-slug">
-                                        <label for="">Trạng thái</label>
-
-                                        <select
-                                            name=""
-                                            id=""
-                                            formControlName="status"
-                                        >
-                                            <option
-                                                selected="selected"
-                                                value=""
-                                            >
-                                                Chuyên mục
-                                            </option>
-                                            <option
-                                                [value]="item.status"
-                                                *ngFor="
-                                                    let item of statusOptions
-                                                "
-                                            >
-                                                {{ item.name }}
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container-btn">
-                                <button
-                                    class="btn-create"
-                                    (click)="submitUpdate(item.id)"
-                                >
-                                    Cập nhật
-                                </button>
-                                <button
-                                    class="btn-cancel"
-                                    (click)="close(item.id)"
-                                >
-                                    Hủy
-                                </button>
-                            </div>
-                        </form>
-                    </td>
-                </tr>
-            </ng-template>
-        </ng-container>
-    </table>
-    <mat-paginator
-        #paginator
-        class="demo-paginator"
-        aria-label="Select page"
-        [length]="length"
-        [pageSize]="pageSize"
-        [pageIndex]="pageIndex"
-        (page)="handlePageEvent($event)"
-    >
-    </mat-paginator>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="edit-slug">
+                    <label for="">Trạng thái</label>
+                    <mat-form-field appearance="outline">
+                      <mat-select formControlName="status">
+                        <mat-option value="">Tất cả các tác giả</mat-option>
+                        <mat-option
+                          [value]="item.status"
+                          *ngFor="let item of statusOptions"
+                          >{{ item.name }}</mat-option
+                        >
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="container-btn">
+                <button
+                  class=""
+                  [ngClass]="{
+                    'btn-create': isChangeEditQuick,
+                    'btn-disable': !isChangeEditQuick
+                  }"
+                  [disabled]="!isChangeEditQuick"
+                  (click)="submitUpdate(item.id)"
+                >
+                  Cập nhật
+                </button>
+                <button class="btn-cancel" (click)="close(item.id)">Hủy</button>
+              </div>
+            </form>
+          </td>
+        </tr>
+      </ng-template>
+    </ng-container>
+  </table>
+  <mat-paginator
+    #paginator
+    class="demo-paginator"
+    aria-label="Select page"
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    (page)="handlePageEvent($event)"
+  >
+  </mat-paginator>
 </div>
 
 <ngx-loading [show]="true" *ngIf="loading"></ngx-loading>

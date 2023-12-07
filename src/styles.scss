@@ -19,7 +19,7 @@
 :root {
   --header-color: #333;
   --white-color: #fff;
-  --primay-color: #0347ff;
+  --primay-color: #2962ff;
   --primay-color-hover: hsla(224, 100%, 51%, 0.8);
   --primay-color-shadow: hsla(224, 100%, 51%, 0.55);
 }
@@ -32,8 +32,11 @@ body {
 
 body {
   margin: 0;
-  font-family: "Arial";
+
   color: #222222;
+}
+* {
+  font-family: "Arial";
 }
 
 .mat-mdc-dialog-surface.mdc-dialog__surface {
@@ -108,29 +111,28 @@ select {
 label {
   display: block;
   margin-bottom: 5px;
-}
-
-button,input {
-  font-size: 16px;
+  font-family: "Merriweather";
+  font-size: 12px;
 }
 
 .btn-create {
   cursor: pointer;
   background: var(--primay-color);
-  padding: 10px 35px;
+  padding: 0 20px;
   border-radius: 5px;
   border: 0;
   color: #fff;
   gap: 10px;
   width: fit-content;
+  height: 40px;
   display: flex;
   align-items: center;
+  font-weight: bold;
   border: 1px solid transparent;
-  font-size: 16px;
-  height: 40px;
   .icon {
     display: flex;
     align-items: center;
+    font-size: 18px;
   }
   &:hover {
     background: var(--primay-color-hover);
@@ -171,7 +173,24 @@ input[type="number"] {
   align-items: center;
   font-weight: bold;
   border: 1px solid transparent;
+  height: 40px;
+  color: #000;
   &:hover {
     background: rgba(192, 192, 192, 0.521);
   }
+}
+.btn-disable {
+  background: white;
+  border-radius: 5px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.473);
+  gap: 5px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(184, 184, 184, 0.5803921569);
+  padding: 0 20px;
+  height: 40px;
+}
+mat-form-field {
+  width: 100%;
 }
