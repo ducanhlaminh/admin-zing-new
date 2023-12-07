@@ -110,6 +110,10 @@ label {
   margin-bottom: 5px;
 }
 
+button,input {
+  font-size: 16px;
+}
+
 .btn-create {
   cursor: pointer;
   background: var(--primay-color);
@@ -121,8 +125,9 @@ label {
   width: fit-content;
   display: flex;
   align-items: center;
-  font-weight: bold;
   border: 1px solid transparent;
+  font-size: 16px;
+  height: 40px;
   .icon {
     display: flex;
     align-items: center;

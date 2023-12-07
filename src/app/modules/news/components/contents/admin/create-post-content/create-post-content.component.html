@@ -10,6 +10,7 @@
                 placeholder="Tiêu đề bài viết"
                 formControlName="title"
                 matInput
+                (change)="changeTitle($event)"
             />
         </mat-form-field>
     </div>
@@ -32,12 +33,14 @@
     </div>
     <div class="slug">
         <label for="">Đường dẫn bài viết :</label>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="bulr">
             <input
                 type="text"
                 matInput
                 placeholder="Đường dẫn bài viết"
                 formControlName="slug"
+                readonly
+                class=""
             />
         </mat-form-field>
 
