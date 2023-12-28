@@ -1,12 +1,53 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
+import { Buffer } from 'buffer';
+import * as forge from 'node-forge';
 @Injectable({
   providedIn: 'root',
 })
 export class NewsService {
+  publicKey =
+    'TUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUFpak13dVdyVndMbDRsdnNUNUJzbQo2bFd3OHp0b1pDUTdyZGpUT2MwU2k4OFk0a3BTalk5dkRNbjBTNFdQU3R5OTZidTM3aDM0Ui9IcnJ0elJEbEVzCmg2VGR6dlJ2d0RBQ3JZR3RweG83OVBiTDZsVWY4VC91ZTJwRng0KzhZNlB1UU1zUGRtWnVsMGI5VFBzUFFMSEMKV25idEN3cGtaR21rcnJiRnRDUE92TjJIQzBQU2tqTXRSYnpZZ25sQnlzekpXWU5ZVkdzTU44bk4wUmhPNVhRegpmaVRQWWtzcHF2d3FlNGVMV2IrNzVCd1hQQUtDYm05Y053b3EwQUFEYm9oVzl3cUR3bnYrSDMwZHBFWGtBa3ZFClg5YlVDN0xwT0RWWUx5MGlnQTgybmlIeThVV0ZZclhTYlhFUHNPU3AzODdMVjJCTTFBMzNZakZBd3U3SG5ISG0KZ3dJREFRQUI=';
+
   constructor(public http: HttpClient) {}
   dataPreview: any;
+
+  encryptRequest(e: any) {
+    try {
+      const n = forge.random.getBytesSync(32);
+      const t = forge.random.getBytesSync(16);
+      e = Object.assign(
+        {
+          timestamp: new Date().getTime(),
+        },
+        e
+      );
+      const i = forge.cipher.createCipher('AES-CTR', n);
+      i.start({
+        iv: t,
+      }),
+        i.update(
+          forge.util.createBuffer(forge.util.encodeUtf8(JSON.stringify(e)))
+        ),
+        i.finish();
+      const r = Buffer.concat([
+        Buffer.from(t, 'binary'),
+        Buffer.from(i.output.data, 'binary'),
+      ]);
+      const s = forge.pki
+        .publicKeyFromPem(forge.util.decode64(this.publicKey))
+        .encrypt(forge.util.encode64(n));
+      return {
+        d: r.toString('base64'),
+        k: forge.util.encode64(s),
+      };
+    } catch (n) {
+      console.log(n);
+      return e;
+    }
+  }
+
   getHotMain() {
     return this.http.get(environment.API_NEWS_HOT_MAIN);
   }
@@ -94,6 +135,9 @@ export class NewsService {
     });
   }
   getAllByAd(data: any) {
+    const dataa = this.encryptRequest(data);
+    console.log(dataa);
+
     return this.http.get(environment.API__ADMIN_ARTICLE, {
       params: { ...data },
     });
