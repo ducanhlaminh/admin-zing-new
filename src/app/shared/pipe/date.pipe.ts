@@ -5,21 +5,14 @@ import { Pipe, PipeTransform } from "@angular/core";
 })
 export class DatePipe implements PipeTransform {
     transform(item: any): any {
-        let date = new Date(item);
+        let create = new Date(item.publishAt);
+        let update = new Date(item.updatedAt);
         if (item.status === 1) {
             return `
-                  ${
-                      date.toLocaleDateString("vi-VN") +
-                      " lúc " +
-                      date.toLocaleTimeString("vi-VN")
-                  }`;
+                  ${update.toLocaleDateString("vi-VN")}`;
         } else {
             return `
-                  ${
-                      date.toLocaleDateString("vi-VN") +
-                      " lúc " +
-                      date.toLocaleTimeString("vi-VN")
-                  }`;
+                  ${create.toLocaleDateString("vi-VN")}`;
         }
     }
 }

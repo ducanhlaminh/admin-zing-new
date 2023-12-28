@@ -31,9 +31,9 @@ import { CreateUserComponent } from "./components/contents/admin/create-user/cre
 import { ManagePositionCategoriesComponent } from "./components/contents/admin/dialogs/manage-position-categories/manage-position-categories.component";
 import { ManagePositionHomeComponent } from "./components/contents/admin/manage-position-home/manage-position-home.component";
 import { DialogCreateCategoryComponent } from "./components/contents/admin/dialogs/dialog-create-category/dialog-create-category.component";
-import { EditUserComponent } from "./components/contents/admin/edit-user/edit-user.component";
+import { EditUserComponent } from "./components/contents/admin/dialogs/edit-user/edit-user.component";
 import { ProfileComponent } from "./components/contents/admin/profile/profile.component";
-import { DialogSearchArticleComponent } from './components/contents/admin/dialogs/dialog-search-article/dialog-search-article.component';
+import { DialogSearchArticleComponent } from "./components/contents/admin/dialogs/dialog-search-article/dialog-search-article.component";
 @NgModule({
     declarations: [
         DatePipe,

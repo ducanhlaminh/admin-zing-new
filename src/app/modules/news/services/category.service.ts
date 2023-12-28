@@ -11,6 +11,7 @@ export class CategoryService {
     categoriesForAd$ = new BehaviorSubject<any>(null);
     categoriesParent$ = new BehaviorSubject<any>(null);
     length: any;
+
     getAllCategories() {
         this.http
             .get(environment.API_CATEGORY_GET_ALL)

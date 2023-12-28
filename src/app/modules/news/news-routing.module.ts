@@ -12,7 +12,7 @@ import { ManageUserComponent } from "./components/contents/admin/manage-user/man
 import { CreateUserComponent } from "./components/contents/admin/create-user/create-user.component";
 import { ManagePositionCategoriesComponent } from "./components/contents/admin/dialogs/manage-position-categories/manage-position-categories.component";
 import { ManagePositionHomeComponent } from "./components/contents/admin/manage-position-home/manage-position-home.component";
-import { EditUserComponent } from "./components/contents/admin/edit-user/edit-user.component";
+import { EditUserComponent } from "./components/contents/admin/dialogs/edit-user/edit-user.component";
 import { ProfileComponent } from "./components/contents/admin/profile/profile.component";
 const routes: Routes = [
     {

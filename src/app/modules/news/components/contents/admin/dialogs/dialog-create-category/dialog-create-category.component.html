@@ -40,10 +40,10 @@
     <ngx-loading [show]="true" *ngIf="loading"></ngx-loading>
 
     <mat-dialog-actions>
-        <button mat-button mat-dialog-close>Hủy</button>
         <button mat-button cdkFocusInitial (click)="submitForm()">
             Tạo mới
         </button>
+        <button mat-button mat-dialog-close>Hủy</button>
     </mat-dialog-actions>
 </div>
 <ngx-loading [show]="true" *ngIf="loading"></ngx-loading>

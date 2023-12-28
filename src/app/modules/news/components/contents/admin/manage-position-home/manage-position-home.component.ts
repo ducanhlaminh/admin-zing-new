@@ -113,7 +113,7 @@ export class ManagePositionHomeComponent implements OnInit {
     }
     cancel() {
         this.isUpadate = false;
-        window.location.reload();
+        this.getHotNews();
     }
     enter(event: any) {
         this.draggingOutsideSourceList = event.container.id;
@@ -225,7 +225,9 @@ export class ManagePositionHomeComponent implements OnInit {
         );
     }
     updatePosition() {
-        if (this.formOption.value.categories_id === "1") {
+        console.log(this.formOption.value.categories_id);
+
+        if (this.formOption.value.categories_id === "trang-chu") {
             let articles: any = [];
             this.hotArticlesHome.center.data.map((item: any, idx: any) => {
                 articles.push({
@@ -246,7 +248,9 @@ export class ManagePositionHomeComponent implements OnInit {
                 });
             });
 
-            this.NewsService.createArtclesHotCate(articles, null).subscribe();
+            this.NewsService.createArtclesHotCate(articles, null).subscribe(
+                () => this.getHotNews()
+            );
         } else {
             const cate = this.categories.find(
                 (category: any) =>
@@ -273,11 +277,11 @@ export class ManagePositionHomeComponent implements OnInit {
                 });
             });
 
-            this.NewsService.createArtclesHotCate(
-                articles,
-                cate.id
-            ).subscribe();
+            this.NewsService.createArtclesHotCate(articles, cate.id).subscribe(
+                () => this.getHotNews()
+            );
         }
+        this.isUpadate = false;
     }
     deletePosition(list_articles: any, position: number) {
         let index = list_articles.findIndex(

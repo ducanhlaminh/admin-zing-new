@@ -62,6 +62,7 @@ table {
 
 .item-stt {
   text-align: center;
+  width: 90px;
 }
 
 .demo-paginator {
@@ -244,6 +245,9 @@ a {
   small {
     border-right: 1px solid #333;
     padding: 0 5px;
+    &:last-child{
+      border-right: 0
+    }
   }
 }
 

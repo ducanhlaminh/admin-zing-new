@@ -39,9 +39,10 @@ table {
   color: whitesmoke;
   background: #d08122;
   border-radius: 7px;
-  font-weight: 600;
-  display: flex;
   align-items: center;
+  width: 100px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .success {
@@ -49,14 +50,18 @@ table {
   color: whitesmoke;
   background: #0aad4e;
   border-radius: 7px;
-  font-weight: 600;
+  width: 100px;
+  text-align: center;
+  font-weight: bold;
 }
 .process {
   padding: 5px 10px;
   color: whitesmoke;
   background: var(--primay-color);
   border-radius: 7px;
-  font-weight: 600;
+  width: 100px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .container {
@@ -225,9 +230,12 @@ table {
   display: flex;
   gap: 15px;
   margin-bottom: 15px;
-  width: 300px;
   select {
     width: 200px;
+  }
+  .select-action{
+  width: 200px;
+
   }
   .btn-action {
     cursor: pointer;
@@ -268,7 +276,7 @@ table {
     flex-wrap: wrap;
     .input {
       input[type="text"] {
-        padding-left: 40px;
+        padding-left: 20px;
       }
       position: relative;
       .icon-search {
@@ -283,6 +291,10 @@ table {
 
 .item-name {
   padding-right: 10px;
+  width: 250px;
+  small{
+    cursor: pointer;
+  }
   .title-status {
     display: flex;
     align-items: flex-start;
@@ -321,8 +333,10 @@ table {
   min-width: 120px;
   padding-right: 10px;
 }
+.item-status {
+  min-width: 120px;
+}
 .item-date-published {
-  width: 25%;
   padding-right: 10px;
 }
 .select-all {

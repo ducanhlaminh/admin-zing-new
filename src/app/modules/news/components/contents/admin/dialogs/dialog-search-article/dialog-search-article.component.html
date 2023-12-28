@@ -1,60 +1,71 @@
+<h2 mat-dialog-title>
+    Tìm kiếm bài viết :
+    <hr />
+</h2>
 <div mat-dialog-content>
-  <div class="container">
-    <div class="create">
-      <form
-        [formGroup]="formSearch"
-        class="input-name"
-        (submit)="getArticles()"
-      >
-        <!-- <label for="name " class="text">Tìm kiếm bài viết</label><br /> -->
-        <div class="input">
-          <input
-            type="text"
-            name=""
-            value=""
-            id="name"
-            placeholder="Tiêu đề bài viết"
-            formControlName="title"
-          />
-          <fa-icon [icon]="faMagnifyingGlass" class="icon-search"></fa-icon>
-        </div>
-      </form>
-      <div class="filters" *ngIf="listArticles">
-        <div class="item-filter">
-          <span>Tất cả kết quả</span>
-        </div>
-      </div>
-      <div class="container-table">
-        <table *ngIf="listArticles">
-          <tr class="box" *ngFor="let item of listArticles; let i = index">
-            <td>
-              <div class="item-infor">
-                <div class="title-status">
-                  <h4>
-                    {{ item?.new_article?.title }}
-                  </h4>
+    <div class="container">
+        <div class="create">
+            <form
+                [formGroup]="formSearch"
+                class="input-name"
+                (submit)="getArticles()"
+            >
+                <!-- <label for="name " class="text">Tìm kiếm bài viết</label><br /> -->
+                <div class="input">
+                    <input
+                        type="text"
+                        name=""
+                        value=""
+                        id="name"
+                        placeholder="Tiêu đề bài viết"
+                        formControlName="title"
+                    />
+                    <fa-icon
+                        [icon]="faMagnifyingGlass"
+                        class="icon-search"
+                    ></fa-icon>
                 </div>
-
-                <div class="">
-                  <small
-                    class="item-cate"
-                    *ngFor="
-                      let cate of item?.new_article.new_articles_categories
-                    "
-                    >{{ cate.category.name }}</small
-                  >
+            </form>
+            <div class="filters" *ngIf="listArticles">
+                <div class="item-filter">
+                    <span>Tất cả kết quả</span>
                 </div>
-              </div>
+            </div>
+            <div class="container-table">
+                <table *ngIf="listArticles">
+                    <tr
+                        class="box"
+                        *ngFor="let item of listArticles; let i = index"
+                    >
+                        <td>
+                            <div class="item-infor">
+                                <div class="title-status">
+                                    <h4>
+                                        {{ item?.new_article?.title }}
+                                    </h4>
+                                </div>
 
-              <fa-icon
-                [icon]="faCircleArrowRight"
-                class="icon-show-more"
-                [mat-dialog-close]="item"
-              ></fa-icon>
-            </td>
-          </tr>
-        </table>
-      </div>
+                                <div class="">
+                                    <small
+                                        class="item-cate"
+                                        *ngFor="
+                                            let cate of item?.new_article
+                                                .new_articles_categories
+                                        "
+                                        >{{ cate.category.name }}</small
+                                    >
+                                </div>
+                            </div>
+
+                            <fa-icon
+                                [icon]="faCircleArrowRight"
+                                class="icon-show-more"
+                                [mat-dialog-close]="item"
+                            ></fa-icon>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

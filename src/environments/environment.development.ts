@@ -35,6 +35,8 @@ export const environment = {
         "http://localhost:4000/api/v1/articles/admin/hot-news",
     API_ADMIN_CATEGORY:
         "http://localhost:4000/api/v1/categories/admin/position",
+    API_ADMIN_CHECK_TITLE:
+        "http://localhost:4000/api/v1/articles/admin/check-title",
 };
 export const configRole = [
     {

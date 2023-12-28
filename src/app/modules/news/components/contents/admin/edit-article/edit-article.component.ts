@@ -44,6 +44,7 @@ export class EditArticleComponent {
             name: "Xuất bản",
             status: 1,
         },
+        { name: "Chờ xử lý", status: 2 },
         { name: "Bản nháp", status: 0 },
     ];
     constructor(

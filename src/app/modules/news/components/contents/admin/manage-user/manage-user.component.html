@@ -56,7 +56,7 @@
                   role_id: 2,
                 });this.selectedStatus = 3; this.getUser()"
         >
-            <span>Biên tập viên</span>
+            <span>Quản trị viên</span>
         </button>
         <button
             class="btn-toggle"
@@ -94,7 +94,7 @@
                 this.getUser()
             "
         >
-            <span>Kiểm duyệt viên</span>
+            <span>Biên tập viên</span>
         </button>
     </div>
     <div class="filter-bottom">
@@ -189,9 +189,7 @@
                     </div>
 
                     <div class="">
-                        <small
-                            [routerLink]="['chinh-sua-thong-tin', item.id]"
-                            class="update-item"
+                        <small (click)="showEdit(item)" class="update-item"
                             >Chỉnh sửa</small
                         >
 
